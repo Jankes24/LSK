@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kosztorys_LSK_1TI</title>
+<style>
+div {
+ border: #000000 solid 2px;
+ border-radius: 10px;
+ width: 80%;
+ margin-left: auto;
+ margin-right: auto;
+ padding-left: 10px;
+ padding-right: 10px;
+ max-width: 45%;
+ min-width: 420px;
+ background-color: #dbb28b;
+}
+
+.sum-row {
+    background-color: #1c8d00;
+    font-style:oblique;
+    font-weight: bold;
+    color: #000000;
+}
+
+.blanc-row {
+    background-color: #292929;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border: solid black 2px;
+  width: 90%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+  background-color: rgb(187, 187, 187);
+  font-style: italic;
+}
+
+td{
+  border: 1px solid #fffddddd;
+  text-align: left;
+  padding: 8px;
+  border: solid black 1px;
+}
+
+th {
+  border: 1px solid #fffddddd;
+  text-align: left;
+  padding: 8px;
+  background-color: rgb(35, 223, 35);
+  border: solid gray 1px;
+}
+
+h1 {
+  border: 2px solid rgb(87, 0, 0);
+  border-radius: 10px;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(88, 199, 236);
+  color: black;
+  font-size: 70px;
+  text-align: center;
+}
+
+h2 {
+  max-width: 550px;
+  margin-top: 20px;
+  color: black;
+  font-size: 30px;
+  width: 70%;
+  background-color: rgb(225, 248, 255);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #dcffd5;
+}
+
+tr {
+  background-color: #a2ff8f;
+}
+</style>
+</head>
+
+<body>
+  <div>
+    <h1>Kosztorys</h1>
+
+<h2>Sprzęt sieciowy oraz servery:</h2>
+<table id="1">
+  <tr>
+    <th>L.p.</th>
+    <th>Nazwa</th>
+    <th>Ilość</th>
+    <th>Cena jedn. netto</th>
+    <th>Cena netto</th>
+  </tr>
+</table>
+<h2>Sprzęt biurowy oraz komputery:</h2>
+<table id="2">
+  <tr>
+    <th>L.p.</th>
+    <th>Nazwa</th>
+    <th>Ilość</th>
+    <th>Cena jedn. netto</th>
+    <th>Cena netto</th>
+  </tr>
+</table>
+
+<table id="3">
+  <tr>
+    <th>L.p.</th>
+    <th>Nazwa</th>
+    <th>Ilość</th>
+    <th>Cena jedn. netto</th>
+    <th>Cena netto</th>
+  </tr>
+</table>
+</div>
+<script>
+function CrTable(data, id) {
+  var Kosztorys = document.getElementById(id);
+  var iterator = 1;
+  var Cost = 0;
+
+  data.forEach(function(item) {
+    var row = Kosztorys.insertRow();
+    
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+
+    cell1.innerHTML = iterator;
+    cell2.innerHTML = item.Name;
+    cell3.innerHTML = item.Count + "szt.";
+    cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
+    cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
+    Cost += item.PriceN1 * item.Count;
+    iterator += 1;
+  });
+
+  var row = Kosztorys.insertRow();
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  cell1.colSpan = 3;
+  cell2.innerHTML = "Suma:";
+  cell3.innerHTML = (Cost).toFixed(2) + "zł";
+  cell1.classList.add("blanc-row");
+  cell2.classList.add("sum-row");
+  cell3.classList.add("sum-row");
+  
+}
+
+var data1 = [
+  { Name: "Dell PowerEdge T350", Count: 1, PriceN1: 9949},
+  { Name: "UPS PowerWalker VI 3000 STL FR", Count: 1, PriceN1: 1524},
+  { Name: "Cisco SMB SG550X Switch", Count: 2, PriceN1: 2498},
+    { Name: "MikroTik RouterBoard RB4011IGS-IN", Count: 1, PriceN1: 1217.70},
+  { Name: "Punkt dostępowy UniFi UAP-AC-PRO", Count: 1, PriceN1: 575}
+];
+
+var data2 = [
+  { Name: "HP Z230 1X4C", Count: 36, PriceN1: 632.50},
+  { Name: "Dell E2216HV 22\"", Count: 36, PriceN1: 300},
+  { Name: "Bezprzewodowa mysz, samochód", Count: 36, PriceN1: 51.32},
+  { Name: "Reinston EKP01", Count: 36, PriceN1: 19.99},
+  { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1390}
+];
+
+var data3 = [
+  { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 35}
+];
+
+CrTable(data1, "1");
+CrTable(data2, "2");
+CrTable(data3, "3");
+  </script>
+</body>
