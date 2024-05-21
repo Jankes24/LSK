@@ -9,7 +9,7 @@
             background-color: rgb(216, 255, 255);
             background-repeat: no-repeat;
             background-size: cover;
-            animation: ease-in-out bg 20s infinite;
+            animation: ease-in-out bg 12s infinite;
         }
         h1 {
             font-size: 90px;
@@ -24,6 +24,7 @@
             padding-bottom: 8px;
             padding-top: 8px;
             border-radius: 5px;
+            animation: title_ani infinite ease-in-out 20s;
         }
         h2 {
             font-size: 50px;
@@ -39,10 +40,10 @@
             border-radius: 5px;     
         }
         #a{
-            animation: rot-a infinite 2s ease-in-out;
+            animation: rot-a infinite 4s ease-in-out;
         }
         #b{
-            animation: rot-b infinite 2s ease-in-out;
+            animation: rot-b infinite 5s ease-in-out;
         }
 
         #a:hover {
@@ -51,6 +52,11 @@
         }
 
         #b:hover {
+            animation: puls infinite .9s ease-in-out;
+            cursor: pointer;
+        }
+
+        #c:hover {
             animation: puls infinite .9s ease-in-out;
             cursor: pointer;
         }
@@ -78,6 +84,13 @@
             25% {background-color: rgb(210, 255, 219);}
             50% {background-color: rgb(194, 255, 245);}
             100% {background-color: rgb(193, 245, 242);}
+        }
+
+        @keyframes title_ani {
+            0% {background-color: rgb(255, 251, 201); rotate: 5deg;}
+            25% {background-color: rgb(255, 215, 169);rotate: 0deg;}
+            50% {background-color: rgb(254, 255, 178);rotate: -5deg;}
+            100% {background-color: rgb(255, 251, 201);rotate: 5deg;}
         }
 
         h4 {
@@ -118,7 +131,7 @@
     </style>
 </head>
 <body>
-    <h1>WITAJ😘😮</h1>
+    <h1 id="c">WITAJ😘😮</h1>
     <div class="button">
         <h2 id="a">Kosztorys🫵</h2>
         <h2 id="b">Projekt🫵</h2>
@@ -134,6 +147,11 @@
         document.getElementById("b").addEventListener("click", function(event) {
         event.preventDefault();
         window.location.href = "projekt.htm";
+        });
+
+        document.getElementById("c").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "welcome.html";
         });
     </script>
 </body>

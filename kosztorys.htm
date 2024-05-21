@@ -9,17 +9,57 @@ body{
   background-color: #a3a3a3;
 }
 
-div {
+#a {
  border: #000000 solid 2px;
  border-radius: 10px;
  width: 80%;
  margin-left: auto;
  margin-right: auto;
- padding-left: 10px;
- padding-right: 10px;
+ padding-left: 30px;
+ padding-right: 30px;
  max-width: 800px;
- min-width: 420px;
+ min-height: 800px;
  background-color: #f3cfae;
+}
+#butt {
+ border: #000000 solid 2px;
+ border-radius: 10px;
+ width: 40%;
+ margin: auto;
+ background-color: #ffcc9c;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+h3{
+  text-align: center;
+  margin: 0px 6%;
+  border: #000000 solid 2px;
+  border-radius: 10px;
+  background-color: #ff846e;
+  padding: 3%;
+  cursor: pointer;
+}
+
+h3:hover{
+  text-align: center;
+  margin: 0px 8%;
+  border: #ffc5c5 solid 2px;
+  border-radius: 10px;
+  background-color: #000000;
+  color: wheat;
+  padding: 2%;
+  cursor: pointer;
+}
+
+h4{
+  font-size: 20px;
+  text-align: center;
+  border: #000000 solid 2px;
+  border-radius: 10px;
+  background-color: #b4b4b4;
+  padding: 2%;
+  cursor: pointer;
 }
 
 .sum-row {
@@ -43,7 +83,7 @@ table {
   border-radius: 2px;
   background-color: rgb(187, 187, 187);
   font-style: italic;
-  margin-bottom: 50px;
+  margin-bottom: 5%;
 }
 
 td{
@@ -76,12 +116,13 @@ h1 {
 
 h2 {
   max-width: 550px;
-  margin-top: 20px;
+  margin-top: 1%;
   color: black;
   font-size: 30px;
   width: 70%;
   background-color: rgb(206, 255, 216);
   border-radius: 5px;
+  border: solid 1px;
   padding-left: 5px;
 }
 
@@ -95,21 +136,62 @@ tr {
 
 @media screen and (max-width: 600px) {
   table {
-    width: 50%;
+    scale: 80%;
+    border: solid black 2px;
+    max-width: 680px;
+    margin-left: -15%;
+    margin-right: auto;
+    border-radius: 2px;
+    background-color: rgb(187, 187, 187);
+    font-style: italic;
+    margin-bottom: 1%;
+    margin-top: -7%;
   }
   h1 {
     font-size: 40px;
   }
+  h2 {
+    font-size: 22px;
+    margin-top: -5%;
+  }
+  #back{
+    width: 60%;
+    font-size: 20px;
+  }
+  #butt {
+      width: 85%;
+  }
+  #a {
+      max-width: 800px;
+      min-height: 990px;
+  }
 }
+
+h5{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      background-color: rgb(255, 193, 143);
+      width: 40%;
+      margin: auto;
+      margin-top: 10px;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      color: red;
+      font-weight: bolder; 
+      cursor: pointer; 
+            
+  }
 
 </style>
 </head>
 
 <body>
-  <div>
+  <div id="a">
+    <h5 id="back">🏠POWRÓT↩</h5>
     <h1>Kosztorys</h1>
-
-    <h2>Sprzęt sieciowy oraz serwery:</h2>
+    <h2 id="header">Sprzęt sieciowy oraz serwery:</h2>
     <table id="1">
       <tr>
         <th>L.p.</th>
@@ -120,34 +202,22 @@ tr {
       </tr>
     </table>
 
-    <h2>Sprzęt biurowy oraz komputery:</h2>
-    <table id="2">
-      <tr>
-        <th>L.p.</th>
-        <th>Nazwa</th>
-        <th>Ilość</th>
-        <th>Cena jedn. netto</th>
-        <th>Cena netto</th>
-      </tr>
-    </table>
-
-    <h2>Sprzęt biurowy oraz komputery:</h2>
-    <table id="3">
-      <tr>
-        <th>L.p.</th>
-        <th>Nazwa</th>
-        <th>Ilość</th>
-        <th>Cena jedn. netto</th>
-        <th>Cena netto</th>
-      </tr>
-    </table>
+    <div id="butt">
+      <h3 id="prev">↩️BACK</h3>
+      <h4 id="str">1</h4>
+      <h3 id="next">NEXT↪️</h3>
+    </div>
   </div>
 
 <script>
+var page = document.getElementById("str");
 function CrTable(data, id) {
   var Kosztorys = document.getElementById(id);
+  var header = document.getElementById("header");
+  
   var iterator = 1;
   var Cost = 0;
+  header.innerHTML = headers[strona].Name;
 
   data.forEach(function(item) {
     var row = Kosztorys.insertRow();
@@ -179,31 +249,76 @@ function CrTable(data, id) {
   cell3.classList.add("sum-row");
 }
 
-var data1 = [
-  { Name: "Dell PowerEdge T350", Count: 1, PriceN1: 9949},
-  { Name: "UPS PowerWalker VI 3000 STL FR", Count: 1, PriceN1: 1524},
-  { Name: "Cisco SMB SG550X Switch", Count: 2, PriceN1: 2498},
+function delTable() {
+  var Kosztorys = document.getElementById("1");
+
+    var rowCount = Kosztorys.rows.length;
+    if (rowCount >= 1){
+
+    for (var i = rowCount - 1; i > 0; i--) {
+        Kosztorys.deleteRow(i);
+    }
+  }
+}
+function pageTurn() {
+  page.innerHTML = (strona + 1)+"/"+datas.length;
+}
+
+var strona = 0;
+
+var datas = [
+  [
+    { Name: "Dell PowerEdge T350", Count: 1, PriceN1: 9949},
+    { Name: "UPS PowerWalker VI 3000 STL FR", Count: 1, PriceN1: 1524},
+    { Name: "Cisco SMB SG550X Switch", Count: 2, PriceN1: 2498},
     { Name: "MikroTik RouterBoard RB4011IGS-IN", Count: 1, PriceN1: 1217.70},
-  { Name: "Punkt dostępowy UniFi UAP-AC-PRO", Count: 1, PriceN1: 575}
+    { Name: "Punkt dostępowy UniFi UAP-AC-PRO", Count: 1, PriceN1: 575}
+],
+[
+    { Name: "HP Z230 1X4C", Count: 36, PriceN1: 632.50},
+    { Name: "Dell E2216HV 22\"", Count: 36, PriceN1: 300},
+    { Name: "Bezprzewodowa mysz, samochód", Count: 36, PriceN1: 51.32},
+    { Name: "Reinston EKP01", Count: 36, PriceN1: 19.99},
+    { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1390}
+],
+[
+    { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 35}
+]
 ];
 
-var data2 = [
-  { Name: "HP Z230 1X4C", Count: 36, PriceN1: 632.50},
-  { Name: "Dell E2216HV 22\"", Count: 36, PriceN1: 300},
-  { Name: "Bezprzewodowa mysz, samochód", Count: 36, PriceN1: 51.32},
-  { Name: "Reinston EKP01", Count: 36, PriceN1: 19.99},
-  { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1390}
+var headers = [
+    { Name: "Sprzęt sieciowy oraz serwery:"},
+    { Name: "Sprzęt biurowy oraz komputery:"},
+    { Name: "Sprzęt biurowy oraz komputery:"}
 ];
 
-var data3 = [
-  { Name: "kable", Count: 90, PriceN1: 555},
-  { Name: "gniazda", Count: 20, PriceN1: 25},
-  { Name: "kiti", Count: 1, PriceN1: 15}
-];
-
-CrTable(data1, "1");
-CrTable(data2, "2");
-CrTable(data3, "3");
+document.getElementById("back").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+});
+document.getElementById("prev").addEventListener("click", function(event) {
+  delTable();
+  if(strona > 0){
+    strona -= 1;   
+  }
+  else{
+    strona = datas.length - 1; 
+  }
+  pageTurn();
+  CrTable(datas[strona], "1");
+});
+document.getElementById("next").addEventListener("click", function(event) {
+  delTable();
+  if(strona < datas.length - 1){
+    strona += 1;
+  }
+  else{
+    strona = 0; 
+  }
+  pageTurn();
+  CrTable(datas[strona], "1");
+});
+CrTable(datas[0], "1");
 </script>
 </body>
 </html>

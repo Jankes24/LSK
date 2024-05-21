@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacje</title>
+    <style>
+
+        #a{
+            width: 80%;
+            max-width: 1500px;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+
+        #b{
+            width: 80%;
+            max-width: 1500px;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; 
+            margin-top: 5%;
+        }
+
+        body{
+            background-color: rgb(255, 244, 208);
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            background-image: -moz-linear-gradient(120deg,rgb(255, 242, 222),rgb(255, 172, 116),rgb(255, 91, 91));
+        }
+        h1 {
+            background-color: rgb(199, 255, 255);
+            width: 45%;
+            margin: auto;
+            margin-top: 5%;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        h5{
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            background-color: rgb(255, 193, 143);
+            width: 25%;
+            margin: auto;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            color: red;
+            font-weight: bolder; 
+            cursor: pointer; 
+                  
+        }
+        img{
+            display: block;
+            margin: 50px auto;
+            width: 20%;
+            border: 8px solid black;
+            border-radius: 50%;
+            animation: infinite rot ease-in-out 2s;
+            cursor: pointer;
+        }
+        img:hover{
+            display: block;
+            margin: 50px auto;
+            width: 23%;
+            border: 10px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        @keyframes rot{
+            0%{rotate: 0deg;background-color: rgb(245, 22, 22);}
+            10%{background-color: rgb(245, 156, 22);}
+            20%{background-color: rgb(253, 240, 57);}
+            25%{rotate: 100deg;}
+            30%{background-color: rgb(206, 255, 114);}
+            40%{background-color: rgb(92, 148, 18);}
+            50%{background-color: rgb(73, 224, 212);}
+            60%{background-color: rgb(16, 125, 139);}
+            70%{background-color: rgb(77, 61, 224);}
+            75%{rotate: -100deg;}
+            80%{background-color: rgb(216, 53, 238);}
+            90%{background-color: rgb(167, 13, 13);}
+            100%{rotate: 0deg;background-color: rgb(245, 22, 22);}
+        }
+
+        @media screen and (max-width: 600px) {
+        img{
+            display: block;
+            margin: 50px auto;
+            width: 60%;
+            border: 5px solid black;
+        }
+        h1 {
+            width: 80%;
+            font-size: 20px;
+        }
+        #back{
+            width: 60%;
+            font-size: 20px;
+            margin-top: 0px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="a">
+        <div id="b">
+        <h5 id="back">🏠POWRÓT↩</h5>
+        <h1>Twórcy: JA💀 (patryś)</h1>
+        <h1>Inni: dawid ślęzak, maxym para, szymon karbowski, barpan pankiewicz😮🤯</h1>
+        <img src="kotek.png" id="cat">
+    </div>
+    </div>
+    <script>
+        document.getElementById("back").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+        });
+        document.getElementById("cat").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        });
+    </script>
+</body>
+</html>
