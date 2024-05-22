@@ -22,6 +22,7 @@
             border: 2px solid black;
             border-radius: 10px;
             width: 60%;
+            max-width: 600px;
             margin: auto;
             align-items: center;
             text-align: center;
@@ -42,13 +43,31 @@
             border: 2px solid rgb(0, 0, 0);
             border-radius: 10px;
             padding: 1%;
-            width: 60%;
+            width: 75%;
             margin-bottom: 5%;
+            margin-top: 2%;
         }
         h2{
             text-align: left;
-            margin-left: 20%;
+            margin-left: 6%;
+            font-size: 18px;
         }
+        @keyframes puls-home-hover {
+            0% { transform: scale(1); color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); rotate: 0deg;}
+            33% {rotate: 1deg;}
+            50% { transform: scale(1.05); background-color: rgb(231, 184, 184); color: black;}
+            66% {rotate: -1deg;}
+            100% { transform: scale(1); color: rgb(255, 255, 255); background-color: rgb(0, 0, 0); rotate: 0deg;}
+        }
+
+        @keyframes puls-home {
+            0% { transform: scale(1); color: rgb(82, 82, 82); background-color: rgb(255, 169, 169); rotate: 0deg;}
+            33% {rotate: 1deg;}
+            50% { transform: scale(1.05); background-color: rgb(255, 215, 168); color: rgb(0, 0, 0);}
+            66% {rotate: -1deg;}
+            100% { transform: scale(1); color: rgb(82, 82, 82); background-color: rgb(255, 169, 169); rotate: 0deg;}
+        }
+
         h5{
       font-family:Arial, Helvetica, sans-serif;
       font-size: 24px;
@@ -64,6 +83,10 @@
       font-weight: bolder; 
       cursor: pointer; 
     margin-bottom: 1%;
+    animation: puls-home 5s infinite ease-in-out;
+  }
+  h5:hover{
+    animation: puls-home-hover 1s infinite ease-in-out;
   }
 
 
@@ -72,12 +95,12 @@
             width: 90%;
         }
         #text-holder{
-            margin-top: 10%;
+            margin-top: 4%;
             width: 90%;
         }
         img{
-            margin-top: 12%;
-            scale: 1.5;
+            margin-top: 6%;
+            width: 90%;
             border: 1px solid black;
         }
         h1{
