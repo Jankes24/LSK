@@ -17,14 +17,100 @@
             margin-top: 20%;
             padding: 20px;
         }
+        #holder{
+            background-color: azure;
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            padding: 2%;
+        }
+        #text-holder{
+            background-color: rgb(255, 224, 212);
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            padding: 2%;
+        }
+        img{
+            background-color: rgb(228, 228, 228);
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 10px;
+            padding: 1%;
+            width: 60%;
+            margin-bottom: 5%;
+        }
+        h2{
+            text-align: left;
+            margin-left: 20%;
+        }
+        h5{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      background-color: rgb(255, 193, 143);
+      width: 30%;
+      margin: auto;
+      margin-top: 1%;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      color: red;
+      font-weight: bolder; 
+      cursor: pointer; 
+    margin-bottom: 1%;
+  }
+
+
         @media screen and (max-width: 600px) {
+        #holder{
+            width: 90%;
+        }
+        #text-holder{
+            margin-top: 10%;
+            width: 90%;
+        }
+        img{
+            margin-top: 12%;
+            scale: 1.5;
+            border: 1px solid black;
+        }
         h1{
             font-size: 30px;
+        }
+        h2{
+            font-size: 10px;
+            margin-left: 6%;
+        }
+        h5{
+            font-size: 12px;
+            width: 60%;
+            border: 1px solid black;
         }
         }
     </style>
 </head>
 <body>
-    <h1>CUMMING SOON...</h1>
+<div id="holder">
+    <h5 id="back">🏠POWRÓT↩</h5>
+    <img src="Schemat.png" alt="">
+    <div id="text-holder">
+        <h2>Pomieszczenia A-F 6m x 10m</h2>
+        <h2>Korytarz 3m x 34m</h2>
+        <h2>Serwerownia 6m x 4m</h2>
+        <h2>Toaleta (raczej nie potrzebna) 6m x 6m</h2>
+    </div>
+</div>
+<script>
+    document.getElementById("back").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+});
+</script>
 </body>
 </html>

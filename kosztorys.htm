@@ -18,18 +18,26 @@ body{
  padding-left: 30px;
  padding-right: 30px;
  max-width: 800px;
- min-height: 800px;
+ min-height: 1000px;
  background-color: #f3cfae;
 }
 #butt {
  border: #000000 solid 2px;
  border-radius: 10px;
- width: 40%;
+ width: 80%;
+ max-width: 400px;
  margin: auto;
  background-color: #ffcc9c;
  display: flex;
  justify-content: center;
  align-items: center;
+}
+#butt-holder{
+  width: 30%;
+  margin-left: 35%;
+ position: fixed;
+ bottom: 10%;
+ left: 0;
 }
 h3{
   text-align: center;
@@ -76,7 +84,7 @@ h4{
 table {
   font-family: arial, sans-serif;
   border: solid black 2px;
-  width: 95%;
+  width: 98%;
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
@@ -136,17 +144,12 @@ tr {
 
 @media screen and (max-width: 600px) {
   table {
-    font-size: 10px;
-    scale: 90%;
+    font-size: 50%;
     border: solid black 2px;
     max-width: 680px;
-    margin-left: -12%;
-    margin-right: auto;
-    border-radius: 2px;
-    background-color: rgb(187, 187, 187);
-    font-style: italic;
-    font-weight: bold;
-    margin-bottom: 1%;
+    font-style:normal;
+    font-weight: 0;
+    margin-bottom: 10%;
   }
   h1 {
     font-size: 40px;
@@ -164,8 +167,16 @@ tr {
     font-size: 20px;
   }
   #butt {
-      width: 85%;
+      width: 80%;
+      margin: auto;
   }
+  #butt-holder{
+  width: 80%;
+  margin-left: 10%;
+ position: fixed;
+ bottom: 10%;
+ left: 0;
+}
   #a {
       max-width: 800px;
       min-height: 990px;
@@ -206,11 +217,12 @@ h5{
         <th>Cena netto</th>
       </tr>
     </table>
-
+    <div id="butt-holder">
     <div id="butt">
       <h3 id="prev">↩️BACK</h3>
       <h4 id="str">1</h4>
       <h3 id="next">NEXT↪️</h3>
+    </div>
     </div>
   </div>
 
