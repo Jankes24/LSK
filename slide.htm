@@ -122,7 +122,7 @@
                     currentIndex = maxIndex;
                 }
                 slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-                page.innerHTML = `${currentIndex}/${maxIndex + 1}`;
+                page.innerHTML = `${currentIndex + 1}/${maxIndex + 1}`;
             }
             document.getElementById("next").addEventListener("click", next);
             document.getElementById("prev").addEventListener("click", back);
