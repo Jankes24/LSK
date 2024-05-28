@@ -86,7 +86,7 @@
 			 border-radius: 10px;
 			 background-color: beige;
              font-weight: 500;
-             max-height: 65vh;
+             max-height: 60vh;
              overflow-y: auto;
              box-sizing: border-box;
 			}
@@ -268,24 +268,42 @@
 			});
 
             let touchstartX = 0;
+            let touchstartY = 0;
             let touchendX = 0;
+            let touchendY = 0;
+            let isScrolling = false;
 
             slides.addEventListener("touchstart", function(event) {
                 touchstartX = event.touches[0].clientX;
+                touchstartY = event.touches[0].clientY;
+                isScrolling = false;
+            });
+
+            slides.addEventListener("touchmove", function(event) {
+                const deltaY = Math.abs(event.touches[0].clientY - touchstartY);
+                if (deltaY > 10) {
+                    isScrolling = true;
+                }
             });
 
             slides.addEventListener("touchend", function(event) {
                 touchendX = event.changedTouches[0].clientX;
+                touchendY = event.changedTouches[0].clientY;
                 handleGesture();
             });
 
             function handleGesture() {
-                if (touchendX < touchstartX) {
-                    next();
+                if (isScrolling) {
+                    return;
                 }
 
-                if (touchendX > touchstartX) {
-                    back();
+                const deltaX = touchendX - touchstartX;
+                if (Math.abs(deltaX) > 50) {
+                    if (deltaX > 0) {
+                        back();
+                    } else {
+                        next();
+                    }
                 }
             }
         </script>
