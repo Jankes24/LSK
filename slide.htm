@@ -55,9 +55,9 @@
 			
 			h1{
             border-radius: 10px;
-            padding: .2%;
+            padding: 1%;
 			 font-weight: 500;
-			 width: 90%;
+			 width: 88%;
 			 margin: auto;
              text-align: center;
 			 font-size: 65px;
@@ -77,7 +77,7 @@
 			}
 			
 			p{
-			 width: 60%;
+			 width: 80%;
 			 margin: auto;
 			 margin-top: 5%;
 			 font-size: 25px;
@@ -150,22 +150,17 @@
             }
             @media screen and (max-width: 600px){
                 p{
-                    width: 80%;
                     font-size: 4vw;
                     padding: 15px;
                 }
-                #small-p{
-                    font-size: 3.6vw;
-                    padding: 15px;
-                }
                 h1{
-                    width: 75%;
+                    width: 80%;
                 }
                 #h1_big{
-                    font-size: 45px;
+                    font-size: 55px;
                 }
                 #h1_med{
-                    font-size: 4.4vw;
+                    font-size: 5vw;
                 }
                 #h1_small{
                     font-size: 25px;
@@ -196,7 +191,7 @@
 	    </div>
             <div class="slide" style="background-color: rgb(129, 255, 117);">
 			<h1 id="h1_med">2.Inwentaryzacja sprzętu i infrastruktury w przedsiębiorstwie.</h1>
-			<p id="small-p">Budynek nie posiada założonego okablowania strukturalnego. Przy projektowaniu uwzględniliśmy użytek jednego z pomieszczeń na 
+			<p>Budynek nie posiada założonego okablowania strukturalnego. Przy projektowaniu uwzględniliśmy użytek jednego z pomieszczeń na 
 			centrum dystrybucyjne sieci. W nim znajdować się będą wszystkie aktywne urządzenia sieciowe, czyli szafa krosownicza, serwer, router,
 			firewall itp. Liczba punktów sieciowych obejmuje 36 aktywnych stanowisk roboczych. Dodatkowo w większości pomieszczeń znajdują się
 			nadmiarowe gniazda sieciowe, dzięki czemu przy dodawaniu stanowisk komputerowych nie będzie potrzebna przebudowa sieci. Ogólna
@@ -267,16 +262,6 @@
 			event.preventDefault();
 			window.location.href = "index.html";
 			});
-
-            const slid = document.getElementById("slides");
-
-            slides.addEventListener("wheel", function(event) {
-                if (event.deltaY < 0) {
-                    back();
-                } else {
-                    next();
-                }
-            });
         </script>
     </body>
 </html>
