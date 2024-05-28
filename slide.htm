@@ -266,6 +266,28 @@
 			event.preventDefault();
 			window.location.href = "index.html";
 			});
+
+            let touchstartX = 0;
+            let touchendX = 0;
+
+            slides.addEventListener("touchstart", function(event) {
+                touchstartX = event.touches[0].clientX;
+            });
+
+            slides.addEventListener("touchend", function(event) {
+                touchendX = event.changedTouches[0].clientX;
+                handleGesture();
+            });
+
+            function handleGesture() {
+                if (touchendX < touchstartX) {
+                    next();
+                }
+
+                if (touchendX > touchstartX) {
+                    back();
+                }
+            }
         </script>
     </body>
 </html>
