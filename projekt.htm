@@ -19,6 +19,7 @@
         }
         p:hover{
             background-color: rgb(54, 133, 170);
+            cursor: pointer;
         }
         body{
             background-color: rgb(255, 239, 216);
@@ -66,6 +67,7 @@
         }
         img:hover{
             background-color: rgb(168, 168, 168);
+            cursor: pointer;
         }
         h2{
             text-align: left;
@@ -154,7 +156,7 @@
 <div id="holder">
     <h5 id="back">🏠POWRÓT↩</h5>
     <img src="Schemat.png" alt="" id="Bez_kable">
-    <p id="Bez_kable-p">FULL SCREEN🔎</p>
+    <p id="Bez_kable">FULL SCREEN🔎</p>
     <div id="text-holder">
         <h2>Pomieszczenia A-F 6m x 10m</h2>
         <h2>Korytarz 3m x 34m</h2>
@@ -162,7 +164,7 @@
         <h2>Toaleta (raczej nie potrzebna) 6m x 6m</h2>
     </div>
     <img src="Schemat_kable.png" alt="" id="Z_kable">
-    <p id="Z_kable-p">FULL SCREEN🔎</p>
+    <p id="Z_kable">FULL SCREEN🔎</p>
     <div id="text-holder">
         <h2>rel</h2>
         <h2>Pomieszczenia A-C i E-G 7 podwójnych gniazd abonenckich</h2>
@@ -176,9 +178,7 @@
 <script>
     document.getElementById("back").addEventListener("click", (event) => links("index.html", event));
     document.getElementById("Z_kable").addEventListener("click", (event) => links("p-kable.html", event));
-    document.getElementById("Z_kable-p").addEventListener("click", (event) => links("p-kable.html", event));
     document.getElementById("Bez_kable").addEventListener("click", (event) => links("p-bez.html", event));
-    document.getElementById("Bez_kable-p").addEventListener("click", (event) => links("p-bez.html", event));
 
     function links(link, event){
         event.preventDefault();
