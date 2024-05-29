@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schemat Okablowania</title>
     <style>
-        body{
+        body {
             margin: 0px;
             height: 100%; 
             background-color: rgb(48, 48, 48);
         }
-        img{
+        img {
             display: block;
             margin: auto;
             margin-top: 30vh;
@@ -26,8 +26,8 @@
             padding-top: 2px;
             padding-bottom: 2px;
             position: fixed;
-            top: -1%;
-            left: 1%;
+            top: 1vh;
+            left: 1vw;
             text-align: center;
         }
 
@@ -35,17 +35,30 @@
             background-color: hsl(0, 100%, 80%);
             cursor: pointer;
         }
-
+        @media screen and (max-width: 600px) {
+            h5 {
+                background-color: hsl(0, 100%, 91%);
+                border-radius: 10%;
+                width: 15vw;
+                font-size: 4vw;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                position: fixed;
+                top: -1vh;
+                left: 1vw;
+                text-align: center;
+            }
+        }
     </style>
 </head>
-<body >
+<body>
     <h5 id="back">EXIT</h5>
     <img src="Schemat_kable.png" alt="">
     <script>
         document.getElementById("back").addEventListener("click", function(event) {
-        event.preventDefault();
-        window.location.href = "projekt.htm";
-});
+            event.preventDefault();
+            window.location.href = "projekt.htm";
+        });
     </script>
 </body>
 </html>
