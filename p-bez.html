@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schemat Budynku</title>
+    <style>
+        body{
+            margin: 0px;
+            height: 100%; 
+            background-color: rgb(48, 48, 48);
+        }
+        img{
+            display: block;
+            margin: auto;
+            margin-top: 30vh;
+            background-color: hsl(0, 0%, 100%);
+            border-radius: 10px;
+            border: solid 2px;
+        }
+        h5{
+            background-color: hsl(0, 100%, 91%);
+            border-radius: 10px;
+            border: solid 2px;
+            width: 7vw;
+            font-size: 1.4vw;
+            padding: 2px;
+            position: fixed;
+            top: 0%;
+            text-align: center;
+            left: 1%;
+        }
+        h5:hover{
+            background-color: hsl(0, 100%, 80%);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body >
+    <h5 id="back">EXIT</h5>
+    <img src="file:///D:/1Folder/LSK/Schemat.png">
+    <script>
+        document.getElementById("back").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "projekt.htm";
+});
+    </script>
+</body>
+</html>
