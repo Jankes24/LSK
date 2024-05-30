@@ -80,7 +80,7 @@ h4{
 }
 
 .blanc-row {
-    background-color: #292929;
+    background-color: #4242426e;
 }
 
 table {
@@ -127,7 +127,10 @@ h1 {
 
 h2 {
   max-width: 550px;
+  margin: auto;
   margin-top: 1%;
+  margin-bottom: 3%;
+  text-align: center;
   color: black;
   font-size: 30px;
   width: 70%;
@@ -236,10 +239,10 @@ h5{
     <table id="1">
       <tr>
         <th>L.p.</th>
-        <th>Nazwa</th>
-        <th>Ilość</th>
-        <th>Cena jedn. netto</th>
-        <th>Cena netto</th>
+        <th id="nazwa">Nazwa</th>
+        <th id="ilosc">Ilość</th>
+        <th id="cena_1">Cena jedn. netto</th>
+        <th id="cena">Cena netto</th>
       </tr>
     </table>
     <div id="butt-holder">
@@ -253,6 +256,12 @@ h5{
 
 <script>
 var page = document.getElementById("str");
+var CalaCenaNetto;
+var jednaCenaNetto;
+var iloscCol = document.getElementById("ilosc");
+var nazwaCol = document.getElementById("nazwa");
+var cena_1 = document.getElementById("cena_1");
+var cena = document.getElementById("cena");
 function CrTable(data, id) {
   var Kosztorys = document.getElementById(id);
   var header = document.getElementById("header");
@@ -262,21 +271,50 @@ function CrTable(data, id) {
   header.innerHTML = headers[strona].Name;
 
   data.forEach(function(item) {
-    var row = Kosztorys.insertRow();
-    
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+    if (item.Count > 0){
+      var row = Kosztorys.insertRow();
+      cena.innerHTML = "Cena netto";
+      cena_1.innerHTML = "Cena jedn. netto";
+      iloscCol.innerHTML = "Ilość";
+      var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
 
-    cell1.innerHTML = iterator;
-    cell2.innerHTML = item.Name;
-    cell3.innerHTML = item.Count + "szt.";
-    cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
-    cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
-    Cost += item.PriceN1 * item.Count;
-    iterator += 1;
+      if (item.Jednostka != null){
+        cell3.innerHTML = item.Count + item.Jednostka;
+      }
+      else{
+        cell3.innerHTML = item.Count + "szt.";
+      }
+
+      cell1.innerHTML = iterator;
+      cell2.innerHTML = item.Name;
+      cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
+      cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
+      Cost += item.PriceN1 * item.Count;
+      iterator += 1;
+    }
+    else {
+      var row = Kosztorys.insertRow();
+      cena.innerHTML = "Cena brutto";
+      cena_1.innerHTML = "Cena netto";
+      iloscCol.innerHTML = "";
+      var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+      cell2.colSpan = 2;
+
+      cell1.innerHTML = iterator;
+      cell2.innerHTML = item.Name;
+      CostOne(datas[iterator - 1]);
+      cell3.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
+      cell4.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
+      Cost = -1;
+      iterator += 1;
+    }
   });
 
   var row = Kosztorys.insertRow();
@@ -285,7 +323,14 @@ function CrTable(data, id) {
   var cell3 = row.insertCell(2);
   cell1.colSpan = 3;
   cell2.innerHTML = "Suma:";
+  CostAll();
+  if (Cost >= 0){
   cell3.innerHTML = (Cost).toFixed(2) + "zł";
+  }
+else{
+  cell3.innerHTML = CalaCenaNetto.toFixed(2) + "zł";
+}
+
   cell1.classList.add("blanc-row");
   cell2.classList.add("sum-row");
   cell3.classList.add("sum-row");
@@ -302,11 +347,43 @@ function delTable() {
     }
   }
 }
+
+function CostAll() {
+  CalaCenaNetto = 0;
+  datas.forEach(function(item) 
+  {
+    item.forEach(function(data)
+    {
+      if (data.Count >= 0)
+      CalaCenaNetto += data.PriceN1 * data.Count;
+  })
+})
+}
+
+function CostOne(data) {
+   jednaCenaNetto = 0;
+    data.forEach(function(datas)
+    {
+      jednaCenaNetto += datas.PriceN1 * datas.Count;
+    }
+)
+}
+
 function pageTurn() {
   page.innerHTML = (strona + 1)+"/"+datas.length;
 }
 
 var strona = 0;
+
+var headers = [
+    { Name: "Sprzęt sieciowy oraz serwery:"},
+    { Name: "Sprzęt biurowy oraz komputery:"},
+    { Name: "Sprzęt komputerowy administratora:"},
+    { Name: "Kabelki:"},
+    { Name: "Koszt dostępu do sieci Internet 3 Lata:"},
+    { Name: "Koszt Systemu:"},
+    { Name: "Końcowy koszt inwestycji:"}
+];
 
 var datas = [
   [
@@ -324,14 +401,31 @@ var datas = [
     { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1390}
 ],
 [
-    { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 35}
+    { Name: "Infinity R550 [X06]", Count: 1, PriceN1: 5190},
+    { Name: "DS-D5022FN00 - monitor 21.5\"", Count: 1, PriceN1: 300},
+    { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 51.32},
+    { Name: "Reinston EKP01", Count: 1, PriceN1: 19.99},
+],
+[
+    { Name: "Kabel UTP PowerCat 5e", Count: 80, PriceN1: 0.65, Jednostka: "m"},
+    { Name: "Gniazda Abonenckie 2xRJ45 FTP", Count: 43, PriceN1: 6.21},
+    { Name: "Wtyk RJ45 5e", Count: 43, PriceN1: 0.28}
+],
+[
+    { Name: "Miesięczny abonament za dostęp do sieci GTS", Count: 36, PriceN1: 2048},
+],
+[
+    { Name: "Windows 11 Pro", Count: 36, PriceN1: 29.23},
+    { Name: "Microsoft Windows Server 2022 Standard (2 Core)", Count: 1, PriceN1: 564}
+],
+[
+    { Name: headers[0].Name.slice(0, -1)},
+    { Name: headers[1].Name.slice(0, -1)},
+    { Name: headers[2].Name.slice(0, -1)},
+    { Name: headers[3].Name.slice(0, -1)},
+    { Name: headers[4].Name.slice(0, -1)},
+    { Name: headers[5].Name.slice(0, -1)}
 ]
-];
-
-var headers = [
-    { Name: "Sprzęt sieciowy oraz serwery:"},
-    { Name: "Sprzęt biurowy oraz komputery:"},
-    { Name: "Sprzęt biurowy oraz komputery:"}
 ];
 
 document.getElementById("back").addEventListener("click", function(event) {

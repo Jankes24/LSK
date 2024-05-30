@@ -152,6 +152,9 @@
                 50% {background-color: rgb(255, 204, 204); color: rgb(110, 110, 110);}
                 100% {background-color: rgb(255, 165, 165); color: black;}
             }
+            @keyframes nothg{
+                0% {color: black;}
+            }
             @media screen and (max-width: 600px){
                 p{
                     width: 80%;
@@ -197,7 +200,10 @@
                 border-radius: 10px;
                 padding: 2%;
                 background-color: rgb(255, 200, 200);
-                animation: r-smooth 1s forwards;
+                animation: nothg;
+            }
+            h2:hover{
+                animation: nothg;
             }
             }
         </style>
@@ -240,8 +246,8 @@
 			<p>kity4</p>
 	    </div>
             <div class="slide" style="background-color: rgb(255, 253, 154);">
-			<h1>5</h1>
-			<p>kity5</p>
+			<h1 id="h1_big">Dzieki Za Uwage</h1>
+			<p>PATRYK TO ROBIL PROSZE O 6 :)</p>
 	    </div>
         </div>
     
