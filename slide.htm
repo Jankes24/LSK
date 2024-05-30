@@ -44,13 +44,13 @@
                 margin: 2% 8%;
                 padding: 2%;
                 background-color: rgb(255, 200, 200);
-                animation: r-smooth 2s forwards;
+                animation: r-smooth 1s forwards;
             }
 
             h2:hover{
                 background-color: rgb(255, 200, 186);
                 cursor: pointer;
-                animation: smooth 900ms forwards cubic-bezier(.67,-0.01,.32,1.22);
+                animation: smooth 500ms forwards cubic-bezier(.67,-0.01,.32,1.22);
             }
 			
 			h1{
@@ -60,7 +60,6 @@
 			 max-width: 90%;
 			 margin: auto;
              text-align: center;
-			 font-size: 65px;
              border: 2px black dotted;
              background-color: rgba(217, 204, 255, 0.418);
              margin-top: 1%;
@@ -93,20 +92,24 @@
 			
 			h5{
 				font-family:Andale Mono, monospace;
-				  font-size: 220%;
+				  font-size: 2vw;
 				  background-color: rgb(255, 193, 143);
 				  margin: auto;
 				  border: 2px solid black;
+                  width: 2vw;
+                  height: 2vw;
+                  max-width: 40px;
+                  max-height: 40px;
 				  border-radius: 10px;
-				  padding: 4px 8px;
 				  text-align: center;
 				  color: red;
 				  font-weight: bolder; 
 				  cursor: pointer; 
 				  animation: puls-home 5s infinite ease-in-out;    
 				 position: fixed;
-				 top: 2%;
-				 left: 1%;				  
+				 top: 1%;
+				 left: 1%;	
+                 padding-bottom: .5vw;			  
 			  }
 			  h5:hover{
 				animation: puls-home-hover 1s infinite ease-in-out;
@@ -168,13 +171,34 @@
                     font-size: 25px;
                 }
                 h5{
-                    font-size: 5.3vw;
+                    font-size: 5vw;
                     top: .5%;
                     left: .5%;
+                    width: 5vw;
+                    height: 5vw;
+                    border: 2px solid;
+                    border-radius: 4px;
                 }
-                #butt-holder{
-                    width: 90%;
-                }
+                #butt-holder {
+                position: relative;			
+                bottom: 10vh;
+                display: flex;
+                background-color: rgb(151, 151, 151);
+                border-radius: 8px;
+                width: 95%;
+                margin: auto;
+                justify-content: center;
+				border: 1px solid;
+            }
+            h2{
+                font-size: 6vw;
+                text-align: center;
+                border: 2px solid;
+                border-radius: 10px;
+                padding: 2%;
+                background-color: rgb(255, 200, 200);
+                animation: r-smooth 1s forwards;
+            }
             }
         </style>
     </head>
