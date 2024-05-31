@@ -322,7 +322,7 @@ function CrTable(data) {
 
       CostOne(datas[iterator - 1]);
       cell3.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
-      cell4.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
+      cell4.innerHTML = (jednaCenaNetto * 1.23).toFixed(2) + "zł";
       Cost = -1; 
     }
     iterator += 1;
@@ -340,7 +340,7 @@ function CrTable(data) {
   cell3.innerHTML = (Cost).toFixed(2) + "zł";
   }
   else{
-    cell3.innerHTML = CalaCenaNetto.toFixed(2) + "zł";
+    cell3.innerHTML = (CalaCenaNetto * 1.23).toFixed(2) + "zł";
   }
 
   cell1.classList.add("blanc-row");
