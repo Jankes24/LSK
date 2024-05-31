@@ -262,8 +262,8 @@ var iloscCol = document.getElementById("ilosc");
 var nazwaCol = document.getElementById("nazwa");
 var cena_1 = document.getElementById("cena_1");
 var cena = document.getElementById("cena");
-function CrTable(data, id) {
-  var Kosztorys = document.getElementById(id);
+function CrTable(data) {
+  var Kosztorys = document.getElementById("1");
   var header = document.getElementById("header");
   
   var iterator = 1;
@@ -441,7 +441,7 @@ document.getElementById("prev").addEventListener("click", function(event) {
     strona = datas.length - 1; 
   }
   pageTurn();
-  CrTable(datas[strona], "1");
+  CrTable(datas[strona]);
 });
 document.getElementById("next").addEventListener("click", function(event) {
   delTable();
@@ -452,9 +452,9 @@ document.getElementById("next").addEventListener("click", function(event) {
     strona = 0; 
   }
   pageTurn();
-  CrTable(datas[strona], "1");
+  CrTable(datas[strona]);
 });
-CrTable(datas[0], "1");
+CrTable(datas[0]);
 pageTurn();
 </script>
 </body>
