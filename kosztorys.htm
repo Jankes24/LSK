@@ -259,11 +259,11 @@ var page = document.getElementById("str");
 var CalaCenaNetto;
 var jednaCenaNetto;
 var iloscCol = document.getElementById("ilosc");
-var nazwaCol = document.getElementById("nazwa");
 var cena_1 = document.getElementById("cena_1");
 var cena = document.getElementById("cena");
-function CrTable(data) {
-  var Kosztorys = document.getElementById("1");
+var Kosztorys = document.getElementById("1");
+function CrTable(data, id) {
+  
   var header = document.getElementById("header");
   
   var iterator = 1;
@@ -271,16 +271,20 @@ function CrTable(data) {
   header.innerHTML = headers[strona].Name;
 
   data.forEach(function(item) {
+    var row = Kosztorys.insertRow();
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = iterator;
+    cell2.innerHTML = item.Name;
     if (item.Count > 0){
-      var row = Kosztorys.insertRow();
+      
       cena.innerHTML = "Cena netto";
       cena_1.innerHTML = "Cena jedn. netto";
       iloscCol.innerHTML = "Ilość";
-      var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
+      var cell5 = row.insertCell(4);
 
       if (item.Jednostka != null){
         cell3.innerHTML = item.Count + item.Jednostka;
@@ -288,33 +292,23 @@ function CrTable(data) {
       else{
         cell3.innerHTML = item.Count + "szt.";
       }
-
-      cell1.innerHTML = iterator;
-      cell2.innerHTML = item.Name;
+      
       cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
       cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
       Cost += item.PriceN1 * item.Count;
-      iterator += 1;
     }
     else {
-      var row = Kosztorys.insertRow();
       cena.innerHTML = "Cena brutto";
       cena_1.innerHTML = "Cena netto";
       iloscCol.innerHTML = "";
-      var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
       cell2.colSpan = 2;
 
-      cell1.innerHTML = iterator;
-      cell2.innerHTML = item.Name;
       CostOne(datas[iterator - 1]);
       cell3.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
       cell4.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
-      Cost = -1;
-      iterator += 1;
+      Cost = -1; 
     }
+    iterator += 1;
   });
 
   var row = Kosztorys.insertRow();
