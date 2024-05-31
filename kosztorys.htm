@@ -104,7 +104,7 @@ td{
   border: solid black 1px;
 }
 
-th {
+.th {
   border: 1px solid #fffddddd;
   text-align: left;
   padding: 8px;
@@ -237,12 +237,7 @@ h5{
     <h1>Kosztorys</h1>
     <h2 id="header">Sprzęt sieciowy oraz serwery:</h2>
     <table id="1">
-      <tr>
-        <th>L.p.</th>
-        <th id="nazwa">Nazwa</th>
-        <th id="ilosc">Ilość</th>
-        <th id="cena_1">Cena jedn. netto</th>
-        <th id="cena">Cena netto</th>
+      <tr id="F_Row">
       </tr>
     </table>
     <div id="butt-holder">
@@ -258,17 +253,41 @@ h5{
 var page = document.getElementById("str");
 var CalaCenaNetto;
 var jednaCenaNetto;
-var iloscCol = document.getElementById("ilosc");
-var cena_1 = document.getElementById("cena_1");
-var cena = document.getElementById("cena");
+var firstRow = document.getElementById("F_Row");
 var Kosztorys = document.getElementById("1");
-function CrTable(data, id) {
-  
+function CrTable(data) {
+  var SumCellSpan = 3;
   var header = document.getElementById("header");
   
   var iterator = 1;
   var Cost = 0;
   header.innerHTML = headers[strona].Name;
+
+  var Fcell1 = firstRow.insertCell(0);
+  Fcell1.classList.add("th");
+  var Fcell2 = firstRow.insertCell(1);
+  Fcell2.classList.add("th");
+  var Fcell3 = firstRow.insertCell(2);
+  Fcell3.classList.add("th");
+  var Fcell4 = firstRow.insertCell(3);
+  Fcell4.classList.add("th");
+
+  if (data[0].Count != null){
+    var Fcell5 = firstRow.insertCell(4);
+    Fcell5.classList.add("th");
+    Fcell1.innerHTML = "L.p.";
+    Fcell2.innerHTML = "Nazwa";
+    Fcell3.innerHTML = "Ilość";
+    Fcell4.innerHTML = "Cena jedn. netto";
+    Fcell5.innerHTML = "Cena netto";
+  }
+  else{
+    Fcell1.innerHTML = "L.p.";
+    Fcell2.innerHTML = "Nazwa";
+    Fcell3.innerHTML = "Cena netto";
+    Fcell4.innerHTML = "Cena brutto";
+    var SumCellSpan = 2;
+  }
 
   data.forEach(function(item) {
     var row = Kosztorys.insertRow();
@@ -281,9 +300,9 @@ function CrTable(data, id) {
     cell2.innerHTML = item.Name;
     if (item.Count > 0){
       
-      cena.innerHTML = "Cena netto";
-      cena_1.innerHTML = "Cena jedn. netto";
-      iloscCol.innerHTML = "Ilość";
+      Fcell5.innerHTML = "Cena netto";
+      Fcell4.innerHTML = "Cena jedn. netto";
+      Fcell3.innerHTML = "Ilość";
       var cell5 = row.insertCell(4);
 
       if (item.Jednostka != null){
@@ -298,10 +317,8 @@ function CrTable(data, id) {
       Cost += item.PriceN1 * item.Count;
     }
     else {
-      cena.innerHTML = "Cena brutto";
-      cena_1.innerHTML = "Cena netto";
-      iloscCol.innerHTML = "";
-      cell2.colSpan = 2;
+      Fcell4.innerHTML = "Cena brutto";
+      Fcell3.innerHTML = "Cena netto";
 
       CostOne(datas[iterator - 1]);
       cell3.innerHTML = jednaCenaNetto.toFixed(2) + "zł";
@@ -315,15 +332,16 @@ function CrTable(data, id) {
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
-  cell1.colSpan = 3;
+  cell1.colSpan = SumCellSpan;
   cell2.innerHTML = "Suma:";
   CostAll();
+
   if (Cost >= 0){
   cell3.innerHTML = (Cost).toFixed(2) + "zł";
   }
-else{
-  cell3.innerHTML = CalaCenaNetto.toFixed(2) + "zł";
-}
+  else{
+    cell3.innerHTML = CalaCenaNetto.toFixed(2) + "zł";
+  }
 
   cell1.classList.add("blanc-row");
   cell2.classList.add("sum-row");
@@ -334,13 +352,16 @@ function delTable() {
   var Kosztorys = document.getElementById("1");
 
     var rowCount = Kosztorys.rows.length;
-    if (rowCount >= 1){
 
     for (var i = rowCount - 1; i > 0; i--) {
         Kosztorys.deleteRow(i);
     }
+
+    var cellCount = firstRow.cells.length;
+    for (var i = cellCount - 1; i >= 0; i--) {
+        firstRow.deleteCell(i);
+    }
   }
-}
 
 function CostAll() {
   CalaCenaNetto = 0;
