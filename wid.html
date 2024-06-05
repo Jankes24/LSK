@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es</title>
+    <style>
+        video{
+            position: fixed;
+            left: 5vw;
+            top: 5vh;
+            width: 90vw;
+            height: 90vh;
+            max-height: 90vw;
+        }
+        body{
+            background-color: blanchedalmond;
+        }
+        b{
+            position: fixed;
+            left: 0.4vw;
+            top: 0.4vw;
+            width: 2vw;
+            height: 2vw;
+            z-index: 99;
+            background-color: brown;
+            text-align: center;
+            color: black;
+            border: 2px solid black;
+            border-radius: 10%;
+            font-size: 1.6vw;
+            opacity: 0;
+        }
+        b:hover{
+            cursor: pointer;
+        }
+        button{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 98;
+            background-color: rgb(99, 99, 99);
+            color: black;
+            text-decoration: none;
+            border: 2px solid black;
+            font-size: 20vw;
+        }
+
+        #but{
+            background-color: beige;
+            width: 80vw;
+            height: 60vh;
+            margin-left: 10vw;
+            font-size: 90%;
+            border-radius: 10vw;
+            max-height: 30vw;
+        }
+        #but:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            40% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            40% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .fadeOut{
+            animation: fadeOut forwards 2s ease ;
+        }
+        .fadeIn{
+            animation: fadeIn forwards 4s ease ;
+        }
+
+        @media screen and (max-width: 600px){
+            a{
+                width: 6vw;
+                height: 6vw;
+                z-index: 99;
+                background-color: brown;
+                text-align: center;
+                color: black;
+                text-decoration: none;
+                border: 1px solid black;
+                border-radius: 10%;
+                font-size: 5.2vw;
+            }
+            #but{
+                margin-top: -40vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div><b id="exit">X</b></div>
+    <button onclick="XD()" id="butt"><div id="but">KLIKNIJ</div></button>
+    <video id="rick" autoplay>
+        <source src="Rick.mp4" type="video/mp4">
+        XDD ikil isiu przeglodarka
+      </video>
+
+      <script>
+        var canExit = false
+        var button = document.getElementById('butt');
+        var buttonText = document.getElementById('but');
+        var exit = document.getElementById('exit');
+        
+        function XD(){  
+        setTimeout(function() {
+                canExit = true;
+        }, 6000);
+
+        setTimeout(function() {
+            buttonText.innerHTML = "ez?"
+            button.classList.add('fadeOut');
+            exit.classList.add('fadeIn');
+        }, 1000); 
+
+        setTimeout(function() {
+            document.getElementById('rick').play();
+        }, 2000); 
+        }
+        document.getElementById("exit").addEventListener("click", function(event) {
+            if (canExit){
+            event.preventDefault();
+            window.location.href = "index.html";
+            }
+        });
+        </script>
+</body>
+</html>
