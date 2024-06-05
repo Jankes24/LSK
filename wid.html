@@ -82,7 +82,7 @@
         }
 
         @media screen and (max-width: 600px){
-            a{
+            b{
                 width: 6vw;
                 height: 6vw;
                 z-index: 99;
@@ -109,15 +109,21 @@
       </video>
 
       <script>
+        
         var canExit = false
         var button = document.getElementById('butt');
         var buttonText = document.getElementById('but');
         var exit = document.getElementById('exit');
         
+        window.onload = function() {
+            var video = document.getElementById('rick');
+            document.getElementById('rick').pause();
+        };
+
         function XD(){  
         setTimeout(function() {
                 canExit = true;
-        }, 6000);
+        }, 5000);
 
         setTimeout(function() {
             buttonText.innerHTML = "ez?"
