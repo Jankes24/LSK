@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Slides</title>
+        <link rel="icon" href="xd.png">
         <style>
             body, html {
                 margin: 0;
@@ -263,23 +264,21 @@
             const page = document.getElementById("page");
             let currentIndex = 0;
             let maxIndex = slides.children.length - 1;
-    
+        
             function next() {
                 if (currentIndex < maxIndex) {
-                    currentIndex++;                 
-                }
-                else{
+                    currentIndex++;
+                } else {
                     currentIndex = 0;
                 }
                 slides.style.transform = `translateX(-${currentIndex * 100}%)`;
                 page.innerHTML = `${currentIndex + 1}/${maxIndex + 1}`;
             }
-    
+        
             function back() {
                 if (currentIndex > 0) {
                     currentIndex--;
-                }
-                else{
+                } else {
                     currentIndex = maxIndex;
                 }
                 slides.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -287,44 +286,36 @@
             }
             document.getElementById("next").addEventListener("click", next);
             document.getElementById("prev").addEventListener("click", back);
-			
-			document.getElementById("back").addEventListener("click", function(event) {
-			event.preventDefault();
-			window.location.href = "index.html";
-			});
-
+        
+            document.getElementById("back").addEventListener("click", function(event) {
+                event.preventDefault();
+                window.location.href = "index.html";
+            });
+        
             let touchstartX = 0;
             let touchstartY = 0;
             let touchendX = 0;
             let touchendY = 0;
-            let isScrolling = false;
-
+        
             slides.addEventListener("touchstart", function(event) {
                 touchstartX = event.touches[0].clientX;
                 touchstartY = event.touches[0].clientY;
-                isScrolling = false;
             });
-
+        
             slides.addEventListener("touchmove", function(event) {
-                const deltaY = Math.abs(event.touches[0].clientY - touchstartY);
-                if (deltaY > 70) {
-                    isScrolling = true;
-                }
+                touchendX = event.touches[0].clientX;
+                touchendY = event.touches[0].clientY;
             });
-
-            slides.addEventListener("touchend", function(event) {
-                touchendX = event.changedTouches[0].clientX;
-                touchendY = event.changedTouches[0].clientY;
+        
+            slides.addEventListener("touchend", function() {
                 handleGesture();
             });
-
+        
             function handleGesture() {
-                if (isScrolling) {
-                    return;
-                }
-
                 const deltaX = touchendX - touchstartX;
-                if (Math.abs(deltaX) > 5) {
+                const deltaY = touchendY - touchstartY;
+        
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     if (deltaX > 0) {
                         back();
                     } else {
@@ -332,7 +323,7 @@
                     }
                 }
             }
-
+        
             slides.addEventListener("wheel", function(event) {
                 if (event.deltaY < 0) {
                     back();

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cos</title>
+    <link rel="icon" href="xd.png">
     <style>
         body {
             background-image: -moz-linear-gradient(80deg,rgb(255, 159, 159),rgb(255, 213, 213),rgb(255, 218, 218));
@@ -23,7 +24,7 @@
             height: 5vh;
             margin-left: 47.5vw;
             margin-top: 47.5vh;
-            animation: tranzycja 1.8s ease-in-out infinite;
+            animation: tranzycjaR 1.2s ease-in-out infinite;
             box-shadow: 0px 0px 100px 100px rgb(255, 0, 0);
             color: rgb(100, 0, 0);
             border-radius: 10px;
@@ -33,6 +34,7 @@
             background-color: black;
             animation: cancel;
             color: aliceblue;
+            
         }
         @keyframes tranzycja{
             0% {background-color: rgb(255, 0, 0)}
@@ -51,6 +53,20 @@
             0% {background-color: rgb(0, 0, 0)}
         }
 
+        @keyframes tranzycjaR{
+            0% {background-color: rgb(255, 0, 0); scale: 200%; box-shadow: 0px 0px 100px 100px rgb(255, 0, 0); transform: rotateY(0deg);}
+            10% {background-color: rgb(255, 94, 0)}
+            20% {background-color: rgb(255, 230, 0)}
+            30% {background-color: rgb(229, 255, 0)}
+            40% {background-color: rgb(24, 141, 0)}
+            50% {background-color: rgb(0, 255, 242); scale: 20%; box-shadow: 0px 0px 50px 600px rgb(0, 238, 255); transform: rotateY(180deg);}
+            60% {background-color: rgb(0, 204, 255)}
+            70% {background-color: rgb(0, 119, 255)}
+            80% {background-color: rgb(47, 0, 255)}
+            92% {background-color: rgb(195, 0, 255)}
+            100% {background-color: rgb(255, 0, 0); scale: 200%; box-shadow: 0px 0px 100px 100px rgb(255, 0, 0); transform: rotateY(0deg);}
+        }
+
         @media screen and (max-width: 600px){
             button{
             font-size: 4vw;
@@ -58,7 +74,6 @@
             height: 5vh;
             margin-left: 40vw;
             margin-top: 47.5vh;
-            animation: tranzycja 1.3s ease-in-out infinite;
             box-shadow: 0px 0px 100px 100px rgb(255, 0, 0);
             color: rgb(100, 0, 0);
             border-radius: 10px;
