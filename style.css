@@ -12,7 +12,7 @@ font-size: 12vw;
 text-align: center;
 }
 .Up{
-    animation: enterKeysUp 1000ms forwards ease;
+    animation: enterKeysUp 300ms forwards ease;
 }
 .Down{
     animation: enterKeysDown 400ms forwards ease;
@@ -24,10 +24,8 @@ text-align: center;
 }
 @keyframes enterKeysUp {
     0%{transform: translateY(-100%); opacity: 0.7; border-radius: 500%;}
-    20%{transform: translateY(0); opacity: 1; border-radius: 0%;}
-    25%{transform: translateY(0); opacity: 1; border-radius: 0%;}
-    99%{transform: translateY(0); opacity: 1; border-radius: 0%;}
-    100%{transform: translateY(100%);}
+    95%{transform: translateY(0); opacity: 1; border-radius: 0%;}
+    100%{transform: translateY(0); opacity: 1; border-radius: 0%;}
 }
 
 @media (max-width: 600px){
@@ -37,10 +35,8 @@ text-align: center;
         100%{transform: translateY(100%); opacity: 0; border-radius: 10vw;}
     }
     @keyframes enterKeysUp {
-        0%{transform: translateY(-100%); opacity: 0.7;}
-        20%{transform: translateY(0); opacity: 1;}
-        25%{transform: translateY(0); opacity: 1;}
-        99%{transform: translateY(0); opacity: 1;}
-        100%{transform: translateY(100%);}
+         0%{transform: translateY(-100%); opacity: 0.7; border-radius: 500%;}
+        95%{transform: translateY(0); opacity: 1; border-radius: 0%;}
+        100%{transform: translateY(0); opacity: 1; border-radius: 0%;}
     }
 }
