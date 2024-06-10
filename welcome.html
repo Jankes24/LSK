@@ -60,9 +60,6 @@
             cursor: pointer; 
             animation: puls-home 5s infinite ease-in-out;     
         }
-        h5:hover{
-    animation: puls-home-hover 1s infinite ease-in-out;
-  }
         img{
             display: block;
             margin: 50px auto;
@@ -130,6 +127,11 @@
             margin-top: 0px;
         }
         }
+        @media (min-width: 601px){
+                h5:hover{
+				animation: puls-home-hover 3s infinite ease-in-out;
+			  }
+}
     </style>
 </head>
 <body>
@@ -146,6 +148,7 @@
         document.getElementById("back").addEventListener("click", function(event) {
             enter_ani.className = '';
             enter_ani.className = 'Up';
+            history.pushState(null, null, "index.html");
             setTimeout(function(){
                 window.location.href = "index.html";
             }, 300);
@@ -153,16 +156,12 @@
         document.getElementById("cat").addEventListener("click", function(event) {
             enter_ani.className = '';
             enter_ani.className = 'Up';
+            history.pushState(null, null, "wid.html");
             setTimeout(function(){
                 window.location.href = "wid.html";
             }, 300);
         });
-        window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 400);
-        });
+
     </script>
 </body>
 </html>

@@ -64,17 +64,6 @@ h3{
   cursor: pointer;
 }
 
-h3:hover{
-  text-align: center;
-  margin: 0px 8%;
-  border: #ffc5c5 solid 2px;
-  border-radius: 10px;
-  background-color: #000000;
-  color: wheat;
-  padding: 2%;
-  cursor: pointer;
-}
-
 h4{
   font-size: 20px;
   text-align: center;
@@ -261,9 +250,24 @@ h5{
       cursor: pointer; 
       animation: puls-home 5s infinite ease-in-out;     
   }
-  h5:hover{
+  
+
+  @media (min-width: 601px){
+    h5:hover{
     animation: puls-home-hover 1s infinite ease-in-out;
   }
+  h3:hover{
+  text-align: center;
+  margin: 0px 8%;
+  border: #ffc5c5 solid 2px;
+  border-radius: 10px;
+  background-color: #000000;
+  color: wheat;
+  padding: 2%;
+  cursor: pointer;
+}
+}
+
 
 </style>
 </head>
@@ -491,16 +495,12 @@ var datas = [
 document.getElementById("back").addEventListener("click", function(event) {
         enter_ani.className = '';
         enter_ani.className = 'Up';
+        history.pushState(null, null, "index.html");
         setTimeout(function(){
             window.location.href = "index.html";
         }, 300);
 });
-window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 400);
-        });
+
 document.getElementById("prev").addEventListener("click", function(event) {
   delTable();
   if(strona > 0){

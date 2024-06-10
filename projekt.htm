@@ -7,22 +7,6 @@
     <link rel="icon" href="xd.png">
     <link rel="stylesheet" href="style.css">
     <style>
-        p{
-            font-size: 90%;
-            background-color: rgb(86, 201, 255);
-            border-radius: 10px;
-            border: solid 1px;
-            text-align: center;
-            width: 20%;
-            margin: auto;
-            margin-top: 2%;
-            margin-bottom: 4%;
-            padding: 5px;
-            cursor: pointer;
-        }
-        p:hover{
-            background-color: rgb(54, 133, 170);
-        }
         body{
             background-color: rgb(255, 242, 224);
             background-image: radial-gradient(#d1ffdb 20%, #d8f6ff 70%, #add3ff 90%, #a7d0ff);
@@ -114,9 +98,6 @@
     margin-bottom: 1%;
     animation: puls-home 5s infinite ease-in-out;
   }
-  h5:hover{
-    animation: puls-home-hover 1s infinite ease-in-out;
-  }
 
 
         @media screen and (max-width: 600px) {
@@ -150,18 +131,12 @@
             width: 60%;
             border: 1px solid black;
         }
-        p{
-            font-size: 85%;
-            border-radius: 10px;
-            border: solid 1px;
-            text-align: center;
-            width: 50%;
-            margin: auto;
-            margin-top: 2%;
-            margin-bottom: 4%;
-            padding: 5px;
         }
-        }
+        @media (min-width: 601px){
+                h5:hover{
+				animation: puls-home-hover 3s infinite ease-in-out;
+			  }
+}
     </style>
 </head>
 <body>
@@ -208,16 +183,12 @@
     function links(link, event){
         enter_ani.className = '';
         enter_ani.className = 'Up';
+        history.pushState(null, null, link);
         setTimeout(function(){
             window.location.href = link;
         }, 300);
     }
-    window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 400);
-        });
+
 </script>
 </body>
 </html>

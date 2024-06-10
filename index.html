@@ -56,11 +56,6 @@ h2 {
     animation: rot-b infinite 6s ease-in-out;
 }
 
-#a:hover, #b:hover, #c:hover, #e:hover {
-    animation: puls infinite 0.9s ease-in-out;
-    cursor: pointer;
-}
-
 @keyframes rot-a {
     0% { rotate: 0deg; }
     25% { rotate: -2deg; }
@@ -156,6 +151,13 @@ h4 {
         background-color: rgba(255, 228, 196, 0.507);
     }
 }
+@media (min-width: 601px){
+    #a:hover, #b:hover, #c:hover, #e:hover {
+    animation: puls infinite 0.9s ease-in-out;
+    cursor: pointer;
+}
+
+}
 .Down{
     animation: enterKeysDown 1200ms forwards ease;
 }
@@ -181,7 +183,9 @@ h4 {
         document.getElementById("e").addEventListener("click", () => links("slide.htm"));
 
         function links(link){
+            enter_ani.className = '';
             enter_ani.className = 'Up';
+            history.pushState(null, null, link);
             setTimeout(function(){
                 window.location.href = link;
             }, 300);

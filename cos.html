@@ -80,16 +80,11 @@
         function goto(){
         enter_ani.className = '';
         enter_ani.className = 'Up';
+        history.pushState(null, null, "index.html");
         setTimeout(function(){
             window.location.href = "index.html";
         }, 300);
         }
-        window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 400);
-        });
     </script>
 </body>
 </html>

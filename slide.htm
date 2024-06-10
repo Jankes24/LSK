@@ -50,12 +50,6 @@
                 background-color: rgb(255, 200, 200);
                 animation: r-smooth 1s forwards;
             }
-
-            h2:hover{
-                background-color: rgb(255, 200, 186);
-                cursor: pointer;
-                animation: smooth 500ms forwards cubic-bezier(.67,-0.01,.32,1.22);
-            }
 			
 			h1{
             border-radius: 10px;
@@ -117,9 +111,7 @@
 				 left: 1%;	
                  padding-bottom: .5vw;			  
 			  }
-			  h5:hover{
-				animation: puls-home-hover 3s infinite ease-in-out;
-			  }
+			  
 
             #page{
                 animation: nth 1s infinite cubic-bezier(.67,-0.01,.32,1.22);
@@ -212,6 +204,16 @@
                 animation: nothg;
             }
             }
+            @media (min-width: 601px){
+                h5:hover{
+				animation: puls-home-hover 3s infinite ease-in-out;
+			  }
+              h2:hover{
+                background-color: rgb(255, 200, 186);
+                cursor: pointer;
+                animation: smooth 500ms forwards cubic-bezier(.67,-0.01,.32,1.22);
+            }
+}
         </style>
     </head>
     <body>
@@ -289,17 +291,13 @@
             document.getElementById("prev").addEventListener("click", back);
         
             document.getElementById("back").addEventListener("click", function(event) {
+                enter_ani.className = '';
                 enter_ani.className = 'Up';
+                history.pushState(null, null, "index.html");
                 setTimeout(function(){
                     window.location.href = "index.html";
                 }, 300);
             });
-            window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 400);
-        });
         
             let touchstartX = 0;
             let touchstartY = 0;
