@@ -181,7 +181,7 @@ h4 {
         document.getElementById("e").addEventListener("click", () => links("slide.htm"));
 
         function links(link){
-            
+            var enterAni = document.getElementById('enter_ani');
             enter_ani.className = 'Up';
             setTimeout(function(){
                 window.location.href = link;
