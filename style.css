@@ -3,7 +3,7 @@ width: 100vw;
 height: 100vh;
 position: fixed;
 background-color: rgb(36, 36, 36);
-background-image: radial-gradient(#00b6bd 60%,#00a85a);
+background-image: radial-gradient(#000000 20%,#4b4b4b8a);
 left: 0;
 top: 0;
 z-index: 5;
