@@ -188,11 +188,14 @@ h4 {
             }, 300);
         }
 
-        window.addEventListener('popstate', function (event) {
-            enter_ani.className = 'Down';
-            setTimeout(function () {
-                enter_ani.className = '';
-            }, 1200);
+        window.addEventListener('load', function () {
+            var enterAni = document.getElementById('enter_ani');
+            if (window.history.state) {
+                enterAni.className = 'Down';
+                setTimeout(function () {
+                    enterAni.className = '';
+                }, 1200);
+            }
         });
     </script>
 </body>
