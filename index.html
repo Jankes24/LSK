@@ -181,22 +181,11 @@ h4 {
         document.getElementById("e").addEventListener("click", () => links("slide.htm"));
 
         function links(link){
-            var enterAni = document.getElementById('enter_ani');
             enter_ani.className = 'Up';
             setTimeout(function(){
                 window.location.href = link;
             }, 300);
         }
-
-        window.addEventListener('load', function () {
-            var enterAni = document.getElementById('enter_ani');
-            if (window.history.state) {
-                enterAni.className = 'Down';
-                setTimeout(function () {
-                    enterAni.className = '';
-                }, 1200);
-            }
-        });
     </script>
 </body>
 </html>
