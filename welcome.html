@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informacje</title>
     <link rel="icon" href="xd.png">
+    <link rel="stylesheet" href="style.css">
     <style>
 
         #a{
@@ -131,6 +132,7 @@
     </style>
 </head>
 <body>
+    <div class="Down" id="enter_ani"></div>
     <div id="a">
         <div id="b">
         <h5 id="back">🏠POWRÓT↩</h5>
@@ -141,12 +143,18 @@
     </div>
     <script>
         document.getElementById("back").addEventListener("click", function(event) {
-        event.preventDefault();
-        window.location.href = "index.html";
+            enter_ani.className = '';
+            enter_ani.className = 'Up';
+            setTimeout(function(){
+                window.location.href = "index.html";
+            }, 300);
         });
         document.getElementById("cat").addEventListener("click", function(event) {
-        event.preventDefault();
-        window.location.href = "wid.html";
+            enter_ani.className = '';
+            enter_ani.className = 'Up';
+            setTimeout(function(){
+                window.location.href = "wid.html";
+            }, 300);
         });
     </script>
 </body>

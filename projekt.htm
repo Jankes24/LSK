@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt</title>
     <link rel="icon" href="xd.png">
+    <link rel="stylesheet" href="style.css">
     <style>
         p{
             font-size: 90%;
@@ -29,7 +30,7 @@
             -webkit-user-select: none;
         }
         h1{
-            font-size: 190%;
+            font-size: 220%;
             background-color: rgb(193, 255, 233);
             border-radius: 20px;
             border: 2px solid;
@@ -164,6 +165,7 @@
     </style>
 </head>
 <body>
+<div class="Down" id="enter_ani"></div>
 <div id="holder">
     <h5 id="back">🏠POWRÓT↩</h5>
     <h1>Projekt Budynku:</h1>
@@ -185,15 +187,30 @@
         <h2>bo serwerownia ma 24m2</h2>
         <h2>a na każde rozpoczęte 10 musi być 1 podwójne</h2>
     </div>
+    <h1>Projekt Łączeń:</h1>
+    <img src="schemat_lacze.png" alt="" id="poloczenie">
+    <div id="text-holder">
+        <h2>rel</h2>
+        <h2>Pomieszczenia A-C i E-G 7 podwójnych gniazd abonenckich</h2>
+        <h2>Serwerownia (pomieszczenie D) 3 podwójnie gniazda abonenckie</h2>
+        <h2>bo trzeba 2 dodać</h2>
+        <h2>i zamień</h2>
+        <h2>bo serwerownia ma 24m2</h2>
+        <h2>a na każde rozpoczęte 10 musi być 1 podwójne</h2>
+    </div>
 </div>
 <script>
     document.getElementById("back").addEventListener("click", (event) => links("index.html", event));
     document.getElementById("Z_kable").addEventListener("click", (event) => links("p-kable.html", event));
     document.getElementById("Bez_kable").addEventListener("click", (event) => links("p-bez.html", event));
+    document.getElementById("poloczenie").addEventListener("click", (event) => links("poloczenia.html", event));
 
     function links(link, event){
-        event.preventDefault();
-        window.location.href = link;
+        enter_ani.className = '';
+        enter_ani.className = 'Up';
+        setTimeout(function(){
+            window.location.href = link;
+        }, 300);
     }
 </script>
 </body>

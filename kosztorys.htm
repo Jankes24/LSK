@@ -5,12 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kosztorys_LSK_1TI</title>
 <link rel="icon" href="xd.png">
+<link rel="stylesheet" href="style.css">
 <style>
 body{
   background-color: #a3a3a3;
-  background-image: linear-gradient(50deg, #d1d1d1,#8d8d8d,#9e9e9e);
+  background-image: linear-gradient(50deg, #d1d1d1,#6d6d6d,#9e9e9e);
   user-select: none;
   -webkit-user-select: none;
+}
+#finalp{
+	padding: 0;
+	margin: 0;
 }
 
 #a {
@@ -83,6 +88,18 @@ h4{
     color: #000000;
 }
 
+a{
+	text-decoration: none;
+	color: rgb(40,20,10);
+	font-weight: bold;
+}
+a:hover{
+  transition: 500ms ease;
+	color: rgb(10,60,190);
+	font-weight: bold;
+	text-decoration: underline;
+}
+
 .blanc-row {
     background-color: #4242426e;
 }
@@ -90,14 +107,14 @@ h4{
 table {
   font-family: arial, sans-serif;
   border: solid black 2px;
-  width: 98%;
+  width: 88%;
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 2px;
   background-color: rgb(187, 187, 187);
   font-style: italic;
-  font-size: 100%;
+  font-size: 98%;
   margin-bottom: 5%;
 }
 
@@ -114,6 +131,7 @@ td{
   padding: 8px;
   background-color: rgb(35, 223, 35);
   border: solid gray 1px;
+  font-weight: bold;
 }
 
 h1 {
@@ -124,7 +142,7 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   background-color: rgb(22, 192, 50);
-  background-image: linear-gradient(40deg,#a2e769,#8fda52,#80d43a 80%);
+  background-image: linear-gradient(40deg,#a2e769,#d2ffab,#afff6e 80%);
   color: black;
   box-shadow: #3a3a3a 0px 0px 8px 1px;
   font-size: 70px;
@@ -153,7 +171,11 @@ tr:nth-child(even) {
 tr {
   background-color: #a2ff8f;
 }
-
+.rowing:hover{
+  transition: 1s ease;
+  width: 101%;
+  font-size: 101%;
+}
 @media screen and (max-width: 600px) {
   table {
     font-size: 2.4vw;
@@ -238,6 +260,7 @@ h5{
 </head>
 
 <body>
+  <div class="Down" id="enter_ani"></div>
   <div id="a">
     <h5 id="back">🏠POWRÓT↩</h5>
     <h1>Kosztorys</h1>
@@ -302,8 +325,15 @@ function CrTable(data) {
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    row.classList.add("rowing");
+
     cell1.innerHTML = iterator;
-    cell2.innerHTML = item.Name;
+	if (item.link != null){
+    cell2.innerHTML = `<a href="${item.link}" target="_blank">${item.Name}</a>`;
+	}
+	else{
+	cell2.innerHTML = `<p id="finalp">${item.Name}</p>`;
+	}
     if (item.Count > 0){
       
       Fcell5.innerHTML = "Cena netto";
@@ -408,50 +438,53 @@ var headers = [
 
 var datas = [
   [
-    { Name: "Dell PowerEdge T350", Count: 1, PriceN1: 9949},
-    { Name: "UPS PowerWalker VI 3000 STL FR", Count: 1, PriceN1: 1524},
-    { Name: "Cisco SMB SG550X Switch", Count: 2, PriceN1: 2498},
-    { Name: "MikroTik RouterBoard RB4011IGS-IN", Count: 1, PriceN1: 1217.70},
-    { Name: "Punkt dostępowy UniFi UAP-AC-PRO", Count: 1, PriceN1: 575}
+    { Name: "Dell PowerEdge T350", Count: 1, PriceN1: 9999, link: "https://www.x-kom.pl/p/730534-serwer-dell-poweredge-t350-e-2314-16gb-1x480-h355-i9b.html"},
+    { Name: "UPS PowerWalker VI 3000 STL FR", Count: 1, PriceN1: 1569, link: "https://www.x-kom.pl/p/1148547-zasilacz-awaryjny-ups-power-walker-vi-3000-stl-fr-line-interactive-3000va-4x-230v-pl-usb-b.html"},
+    { Name: "Cisco SMB SG550X Switch", Count: 2, PriceN1: 8338.92, link: "https://natic.pl/sg500x-48-k9-g5-cisco-sg500x-48-48x10-100-1000-4x10gig-sfp-stackable-managed-switch,id2152.html?utm_source=ceneo&utm_medium=referral&ceneo_cid=b66cb1ee-6bac-eebf-11e7-8aec66a486ff"},
+    { Name: "MikroTik RouterBoard RB4011IGS-IN", Count: 1, PriceN1: 1400.36, link: "https://erli.pl/produkt/mikrotik-routerboard-rb4011igs-in,149370658?msclkid=19bd9e935a3612b1a5a8f8f58d860021&utm_source=bing&utm_medium=cpc&utm_campaign=ba_shopping_10_n&utm_term=2335225258876457&utm_content=Asset"},
+    { Name: "Punkt dostępowy UniFi UAP-AC-PRO", Count: 1, PriceN1: 619, link: "https://www.mediaexpert.pl/komputery-i-tablety/urzadzenia-sieciowe/punkty-dostepu-access-point/access-point-ubiquiti-unifi-uap-ac-pro-ap-ac1300-5ghz-n450-2-4ghz-122m-2x1gbe-lan?msclkid=ef822ab545f81b604d454cd39df65806&utm_source=bing&utm_medium=cpc&utm_campaign=MS%20Shopping%20%3E%20IT%20%3E%20All%20*ROAS&utm_term=4587437397843257&utm_content=Urz%C4%85dzenia%20sieciowe"}
 ],
 [
-    { Name: "HP Z230 1X4C", Count: 36, PriceN1: 632.50},
-    { Name: "Dell E2216HV 22\"", Count: 36, PriceN1: 300},
-    { Name: "Bezprzewodowa mysz, samochód", Count: 36, PriceN1: 51.32},
-    { Name: "Reinston EKP01", Count: 36, PriceN1: 19.99},
-    { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1390}
+    { Name: "HP Z230 SFF", Count: 36, PriceN1: 1804.20, link: "https://allegro.pl/oferta/hp-workstation-z230-sff-i7-4770-8gb-1tb-ssd-w10p-15172647633?utm_feed=d0a06425-3bb3-4be2-b457-051355867b96&utm_source=bing.com&utm_medium=cpc&utm_campaign=pl_narzedzia&msclkid=8fc32d86f63a1855145e4be02dc6559f"},
+    { Name: "Dell E2216HV 21.5\"", Count: 36, PriceN1: 429, link: "https://www.mediaexpert.pl/komputery-i-tablety/monitory-led/monitor-dell-e2216hv-21-5-1920x1080px?msclkid=3a0b802dab891c6badaee64b770a005b&utm_source=bing&utm_medium=cpc&utm_campaign=MS%20Shopping%20%3E%20IT%20%3E%20All%20*ROAS&utm_term=4587231240717471&utm_content=Monitory"},
+    { Name: "Bezprzewodowa mysz, samochód", Count: 36, PriceN1: 31.31, link: "https://allegro.pl/oferta/mysz-bezprzewodowa-srebrny-styl-samochodu-14698345091?utm_feed=d0a06425-3bb3-4be2-b457-051355867b96&utm_source=bing.com&utm_medium=cpc&utm_campaign=pl_narzedzia&msclkid=7de3a5e700071bbaece4c381dcea77db"},
+    { Name: "Reinston EKP01", Count: 36, PriceN1: 19.99, link: "https://www.oleole.pl/klawiatury-komputerowe/reinston-klawiatura-przewodowa-ekp01-reinston.bhtml?from=ceneo&p=19.99&cr=0&t=20240610-1222&utm_source=ceneo&utm_medium=referral&ceneo_cid=b49e8ea2-24bc-8227-8499-ee03a9a0d04a"},
+    { Name: "Canon i-SENSYS MF275DW", Count: 2, PriceN1: 1079, link: "https://www.mediaexpert.pl/komputery-i-tablety/drukarki-i-urzadzenia-biurowe/urzadzenia-wielofunkcyjne/urzadzenie-wielofunkcyjne-canon-i-sensys-mf275dw?msclkid=a4915ce857d818ce11913a8e8a8638a4&utm_source=bing&utm_medium=cpc&utm_campaign=MS%20Shopping%20%3E%20IT%20%3E%20All%20*ROAS&utm_term=4586956362525965&utm_content=Drukarki%20i%20urz%C4%85dzenia%20biurowe"}
 ],
 [
-    { Name: "Infinity R550 [X06]", Count: 1, PriceN1: 5190},
-    { Name: "DS-D5022FN00 - monitor 21.5\"", Count: 1, PriceN1: 300},
-    { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 51.32},
-    { Name: "Reinston EKP01", Count: 1, PriceN1: 19.99},
+    { Name: "Infinity R550 [X06]", Count: 1, PriceN1: 4799, link: "https://www.ceneo.pl/162699953?se=0uF2Tj8XeAtvN_7Ir7Lg6KjU8-S4aTOS&msclkid=0203c1be203710fa85a8a7d8fd8c4b2c"},
+    { Name: "DS-D5022FN00 - monitor 21.5\"", Count: 1, PriceN1: 472, link: "https://allegro.pl/oferta/monitor-hdmi-vga-ds-d5022fn00-21-5-hikvision-15304690988?utm_feed=d0a06425-3bb3-4be2-b457-051355867b96&utm_source=bing.com&utm_medium=cpc&utm_campaign=pl_narzedzia&msclkid=a3aed8f9c9c810ff2174be9f1434bb91"},
+    { Name: "Bezprzewodowa mysz, samochód", Count: 1, PriceN1: 52.99, link: "https://allegro.pl/oferta/bezprzewodowa-mysz-samochodowa-chevrolet-10770647522?utm_feed=d0a06425-3bb3-4be2-b457-051355867b96&utm_source=bing.com&utm_medium=cpc&utm_campaign=pl_narzedzia&msclkid=a26d7d12140c13673bd51b74ca4839c6"},
+    { Name: "Reinston EKP01", Count: 1, PriceN1: 19.99, link: "https://www.oleole.pl/klawiatury-komputerowe/reinston-klawiatura-przewodowa-ekp01-reinston.bhtml?from=ceneo&p=19.99&cr=0&t=20240610-1222&utm_source=ceneo&utm_medium=referral&ceneo_cid=68583508-4827-0dd1-7303-50cc4e65da4d"},
 ],
 [
-    { Name: "Kabel UTP PowerCat 5e", Count: 80, PriceN1: 0.65, Jednostka: "m"},
-    { Name: "Gniazda Abonenckie 2xRJ45 FTP", Count: 45, PriceN1: 6.21},
-    { Name: "Wtyk RJ45 5e", Count: 43, PriceN1: 0.28}
+    { Name: "Kabel UTP PowerCat 5e", Count: 110, PriceN1: 0.65, Jednostka: "m", link: ""},
+    { Name: "Gniazda Abonenckie 2xRJ45 FTP", Count: 45, PriceN1: 42.99, link: "https://www.jula.pl/catalog/gospodarstwo-domowe/sprzet-rtv/siec/kablesloty-kart-sieciowych/gniazdo-komputerowe-004163/?msclkid=8747510fc5ee17840c8b37691a4037c8&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20%7C%20All%20products&utm_term=4580634175284948&utm_content=All%20products"},
+    { Name: "Wtyk RJ45 5e - 20szt.", Count: 3, PriceN1: 10.90, link: "https://botland.com.pl/zlacza-sieciowe-rj/16359-wtyk-sieciowy-rj45-przelotowy-lanberg-kat-5e-ftp-20szt-5901969423969.html?cd=518903701&ad=1317217218964164&kd=&msclkid=5337f83d9f161a53eeea9e5b40e77d2d&utm_source=bing&utm_medium=cpc&utm_campaign=PLA%20-%20elektronika%20-%2006.2023&utm_term=4585925565191789&utm_content=Ad%20group%20%231"},
 ],
 [
-    { Name: "Miesięczny abonament za dostęp do sieci GTS", Count: 36, PriceN1: 2048},
+    { Name: "Miesięczny abonament za dostęp do sieci GTS", Count: 36, PriceN1: 2048, link: "https://biznes.inea.pl/oferta/internet/internet-standard?_gl=1*m02y7m*_up*MQ..*_ga*MTAxMTQ5OTQ3Mi4xNzE4MDE4NTUx*_ga_R0PLEYEBQ5*MTcxODAxODU1MC4xLjAuMTcxODAxODU1MC4wLjAuMA.."},
 ],
 [
-    { Name: "Windows 11 Pro", Count: 36, PriceN1: 29.23},
-    { Name: "Microsoft Windows Server 2022 Standard (2 Core)", Count: 1, PriceN1: 564}
+    { Name: "Windows 11 Pro", Count: 36, PriceN1: 95, link: "https://keytive.com/pl/produkt/microsoft-windows-11-pro-retail/?msclkid=0908302749f51865a74e5641ab0a6b52"},
+    { Name: "Microsoft Windows Server 2022 Standard (2 Core)", Count: 1, PriceN1: 4412, link: "https://soft360.pl/windows-server-2022/1970microsoft-windows-server-2022-standard.html?tm=tt&ap=gads&aaid=adatDQpFCFk4Q&msclkid=27fe32ee1fe414b4abf15488fcb60f73&utm_source=bing&utm_medium=cpc&utm_campaign=GMC%20Windows%20Server&utm_term=4577198194996732&utm_content=Windows%20Server%202022%20Standard_"}
 ],
 [
-    { Name: headers[0].Name.slice(0, -1)},
-    { Name: headers[1].Name.slice(0, -1)},
-    { Name: headers[2].Name.slice(0, -1)},
-    { Name: headers[3].Name.slice(0, -1)},
-    { Name: headers[4].Name.slice(0, -1)},
-    { Name: headers[5].Name.slice(0, -1)}
+    { Name: headers[0].Name.slice(0, -1), link: null},
+    { Name: headers[1].Name.slice(0, -1), link: null},
+    { Name: headers[2].Name.slice(0, -1), link: null},
+    { Name: headers[3].Name.slice(0, -1), link: null},
+    { Name: headers[4].Name.slice(0, -1), link: null},
+    { Name: headers[5].Name.slice(0, -1), link: null}
 ]
 ];
 
 document.getElementById("back").addEventListener("click", function(event) {
-        event.preventDefault();
-        window.location.href = "index.html";
+        enter_ani.className = '';
+        enter_ani.className = 'Up';
+        setTimeout(function(){
+            window.location.href = "index.html";
+        }, 300);
 });
 document.getElementById("prev").addEventListener("click", function(event) {
   delTable();

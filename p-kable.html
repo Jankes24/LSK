@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schemat Okablowania</title>
     <link rel="icon" href="xd.png">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             margin: 0;
@@ -81,6 +82,7 @@
 </head>
 
 <body>
+    <div class="Down" id="enter_ani"></div>
     <div class="modal-container">
         <img src="Schemat-kable.jpg" alt="Schemat Okablowania">
         <h5 id="exit">EXIT</h5>
@@ -88,7 +90,11 @@
 
     <script>
         document.getElementById("exit").addEventListener("click", function() {
-            window.location.href = "projekt.htm";
+            enter_ani.className = '';
+            enter_ani.className = 'Up';
+            setTimeout(function(){
+                window.location.href = "projekt.htm";
+            }, 300);
         });
     </script>
 </body>

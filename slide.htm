@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Slides</title>
         <link rel="icon" href="xd.png">
+        <link rel="stylesheet" href="style.css">
         <style>
             body, html {
                 margin: 0;
@@ -214,7 +215,7 @@
         </style>
     </head>
     <body>
-	
+        <div class="Down" id="enter_ani"></div>
         <div id="slides">
             <div class="slide" style="background-color: rgb(206, 255, 255);">
 			<h1 id="h1_big">Wstęp</h1>
@@ -288,8 +289,11 @@
             document.getElementById("prev").addEventListener("click", back);
         
             document.getElementById("back").addEventListener("click", function(event) {
-                event.preventDefault();
-                window.location.href = "index.html";
+                enter_ani.className = '';
+                enter_ani.className = 'Up';
+                setTimeout(function(){
+                    window.location.href = "index.html";
+                }, 300);
             });
         
             let touchstartX = 0;
@@ -297,17 +301,17 @@
             let touchendX = 0;
             let touchendY = 0;
         
-            slides.addEventListener("touchstart", function(event) {
+            document.addEventListener("touchstart", function(event) {
                 touchstartX = event.touches[0].clientX;
                 touchstartY = event.touches[0].clientY;
             });
         
-            slides.addEventListener("touchmove", function(event) {
+            document.addEventListener("touchmove", function(event) {
                 touchendX = event.touches[0].clientX;
                 touchendY = event.touches[0].clientY;
             });
         
-            slides.addEventListener("touchend", function() {
+            document.addEventListener("touchend", function() {
                 handleGesture();
             });
         
@@ -324,13 +328,15 @@
                 }
             }
         
-            slides.addEventListener("wheel", function(event) {
-                if (event.deltaY < 0) {
-                    back();
-                } else {
-                    next();
+            document.addEventListener('keydown', recordKey);
+            function recordKey(e) {
+                    if (e.key == "ArrowLeft"){
+                        back();
+                    }
+                    else if (e.key == "ArrowRight"){
+                        next();
+                    }
                 }
-            });
         </script>
     </body>
 </html>

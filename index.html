@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LSK_Projekt</title>
     <link rel="icon" href="xd.png">
+    <link rel="stylesheet" href="style.css">
     <style>
 body {
     background-color: rgb(216, 255, 255);
@@ -158,6 +159,7 @@ h4 {
 </style>
 </head>
 <body>
+    <div class="Down" id="enter_ani"></div>
     <h1 id="c">WITAJ😘😮</h1>
     <div id="holder">
         <div class="button">
@@ -170,18 +172,17 @@ h4 {
 
     <script>
         document.getElementById("a").addEventListener("click", () => links("kosztorys.htm"));
-
         document.getElementById("b").addEventListener("click", () => links("projekt.htm"));
-
         document.getElementById("c").addEventListener("click", () => links("welcome.html"));
-
-        document.getElementById("d").addEventListener("click", () => links("cos.html"));
-        
+        document.getElementById("d").addEventListener("click", () => links("cos.html"));  
         document.getElementById("e").addEventListener("click", () => links("slide.htm"));
 
         function links(link){
-            event.preventDefault();
-            window.location.href = link;
+            enter_ani.className = '';
+            enter_ani.className = 'Up';
+            setTimeout(function(){
+                window.location.href = link;
+            }, 300);
         }
     </script>
 </body>
