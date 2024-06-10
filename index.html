@@ -157,7 +157,7 @@ h4 {
     }
 }
 .Down{
-    animation: enterKeysDown 1500ms forwards ease;
+    animation: enterKeysDown 1200ms forwards ease;
 }
 </style>
 </head>
@@ -181,12 +181,19 @@ h4 {
         document.getElementById("e").addEventListener("click", () => links("slide.htm"));
 
         function links(link){
-            enter_ani.className = '';
+            
             enter_ani.className = 'Up';
             setTimeout(function(){
                 window.location.href = link;
             }, 300);
         }
+
+        window.addEventListener('popstate', function (event) {
+            enter_ani.className = 'Down';
+            setTimeout(function () {
+                enter_ani.className = '';
+            }, 1200);
+        });
     </script>
 </body>
 </html>

@@ -294,6 +294,12 @@
                     window.location.href = "index.html";
                 }, 300);
             });
+            window.addEventListener('popstate', function (event) {
+            enter_ani.className = 'Down';
+            setTimeout(function () {
+                enter_ani.className = '';
+            }, 400);
+        });
         
             let touchstartX = 0;
             let touchstartY = 0;

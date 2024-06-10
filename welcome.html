@@ -157,6 +157,12 @@
                 window.location.href = "wid.html";
             }, 300);
         });
+        window.addEventListener('popstate', function (event) {
+            enter_ani.className = 'Down';
+            setTimeout(function () {
+                enter_ani.className = '';
+            }, 400);
+        });
     </script>
 </body>
 </html>
