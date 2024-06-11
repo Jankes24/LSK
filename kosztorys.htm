@@ -88,7 +88,7 @@ a{
 }
 a:hover{
   transition: 350ms ease;
-	color: #0000d3;
+	color: var(--FontHoverLink);
 	font-weight: bold;
 	text-decoration: underline;
 }
@@ -165,14 +165,10 @@ tr {
   background-color: #a2ff8f;
 }
 .rowing{
-  --FontHover: rgb(37, 0, 0);
-}
-.rowing:hover{
-  transition: 200ms ease;
-  font-weight: bold;
-  background-color: rgba(238, 255, 198, 0.849);
-  --FontHover: rgb(255, 23, 23);
-  color: rgb(255, 22, 22);
+  transition: 1500ms ease;
+  --FontHover: rgb(63, 63, 63);
+  --FontHoverLink: rgb(37, 131, 255);
+  color: rgb(0, 0, 0);
 }
 @media screen and (max-width: 600px) {
   table {
@@ -266,6 +262,12 @@ h5{
   padding: 2%;
   cursor: pointer;
 }
+.rowing:hover{
+  transition: 300ms ease;
+  background-color: rgba(0, 0, 0, 0.671);
+  --FontHover: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
 }
 
 
@@ -356,13 +358,14 @@ function CrTable(data) {
 
       if (item.Jednostka != null){
         cell3.innerHTML = item.Count + item.Jednostka;
+        cell5.innerHTML = (item.PriceN1).toFixed(2) + "zł";
       }
       else{
         cell3.innerHTML = item.Count + "szt.";
+        cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
       }
       
       cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
-      cell5.innerHTML = (item.PriceN1 * item.Count).toFixed(2) + "zł";
       Cost += item.PriceN1 * item.Count;
     }
     else {
@@ -471,12 +474,13 @@ var datas = [
     { Name: "Reinston EKP01", Count: 1, PriceN1: 19.99, link: "https://www.oleole.pl/klawiatury-komputerowe/reinston-klawiatura-przewodowa-ekp01-reinston.bhtml?from=ceneo&p=19.99&cr=0&t=20240610-1222&utm_source=ceneo&utm_medium=referral&ceneo_cid=68583508-4827-0dd1-7303-50cc4e65da4d"},
 ],
 [
-    { Name: "Kabel UTP PowerCat 5e", Count: 110, PriceN1: 0.65, Jednostka: "m", link: ""},
+    { Name: "Kabel UTP PowerCat 5e", Count: 20, PriceN1: 21.99, Jednostka: "m", link: "https://allegro.pl/oferta/kabel-sieciowy-utp-rj45-kat-5e-20m-skretka-lanberg-9041908352?fromVariant=6992379043"},
+    { Name: "Kabel UTP PowerCat 5e", Count: 100, PriceN1: 60.99, Jednostka: "m", link: "https://allegro.pl/oferta/kabel-sieciowy-utp-rj45-kat-5e-100m-skretka-przewod-internetowy-lan-lanberg-6992379043"},
     { Name: "Gniazda Abonenckie 2xRJ45 FTP", Count: 45, PriceN1: 42.99, link: "https://www.jula.pl/catalog/gospodarstwo-domowe/sprzet-rtv/siec/kablesloty-kart-sieciowych/gniazdo-komputerowe-004163/?msclkid=8747510fc5ee17840c8b37691a4037c8&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20%7C%20All%20products&utm_term=4580634175284948&utm_content=All%20products"},
     { Name: "Wtyk RJ45 5e - 20szt.", Count: 3, PriceN1: 10.90, link: "https://botland.com.pl/zlacza-sieciowe-rj/16359-wtyk-sieciowy-rj45-przelotowy-lanberg-kat-5e-ftp-20szt-5901969423969.html?cd=518903701&ad=1317217218964164&kd=&msclkid=5337f83d9f161a53eeea9e5b40e77d2d&utm_source=bing&utm_medium=cpc&utm_campaign=PLA%20-%20elektronika%20-%2006.2023&utm_term=4585925565191789&utm_content=Ad%20group%20%231"},
 ],
 [
-    { Name: "Miesięczny abonament za dostęp do sieci GTS", Count: 36, PriceN1: 2048, link: "https://biznes.inea.pl/oferta/internet/internet-standard?_gl=1*m02y7m*_up*MQ..*_ga*MTAxMTQ5OTQ3Mi4xNzE4MDE4NTUx*_ga_R0PLEYEBQ5*MTcxODAxODU1MC4xLjAuMTcxODAxODU1MC4wLjAuMA.."},
+    { Name: "Miesięczny dostęp do Internetu światłowodowego 900Mb/s", Count: 36, PriceN1: 95, link: "https://www.t-mobile.pl/c/oferta-specjalna/internet-tmobile?net_type=1&fms_type=1&id_wydawcy=1838465&utm_source=google&utm_medium=cpc&utm_campaign=GENERIC&gad_source=1&gclid=CjwKCAjw65-zBhBkEiwAjrqRMLuzwgegPv39Tds5Uv8pHE0KiKguSp8McPcg4hDWAYm47HOaDTdYjxoCMNMQAvD_BwE&gclsrc=aw.ds"},
 ],
 [
     { Name: "Windows 11 Pro", Count: 36, PriceN1: 95, link: "https://keytive.com/pl/produkt/microsoft-windows-11-pro-retail/?msclkid=0908302749f51865a74e5641ab0a6b52"},
