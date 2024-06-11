@@ -183,7 +183,7 @@
     function links(link, event){
         enter_ani.className = '';
         enter_ani.className = 'Up';
-        history.pushState(null, null, link);
+        history.replaceState(null, null, link);
         setTimeout(function(){
             window.location.href = link;
         }, 300);

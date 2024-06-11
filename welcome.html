@@ -148,7 +148,7 @@
         document.getElementById("back").addEventListener("click", function(event) {
             enter_ani.className = '';
             enter_ani.className = 'Up';
-            history.pushState(null, null, "index.html");
+            history.replaceState(null, null, "index.html");
             setTimeout(function(){
                 window.location.href = "index.html";
             }, 300);

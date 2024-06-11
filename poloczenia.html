@@ -92,7 +92,7 @@
         document.getElementById("exit").addEventListener("click", function() {
             enter_ani.className = '';
             enter_ani.className = 'Up';
-            history.pushState(null, null, "projekt.htm");
+            history.replaceState(null, null, "projekt.htm");
             setTimeout(function(){
                 window.location.href = "projekt.htm";
             }, 300);
