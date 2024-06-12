@@ -48,13 +48,15 @@
                 margin: 2% 8%;
                 padding: 2%;
                 background-color: rgb(255, 200, 200);
-                animation: r-smooth 1s forwards;
+                cursor: pointer;
+                transition: 1500ms ease;
             }
 			
 			h1{
             border-radius: 10px;
-            padding: .2%;
+            padding-inline: 2%;
 			 font-weight: 500;
+             width: fit-content;
 			 max-width: 90%;
 			 margin: auto;
              text-align: center;
@@ -114,7 +116,6 @@
 			  
 
             #page{
-                animation: nth 1s infinite cubic-bezier(.67,-0.01,.32,1.22);
                 border: 2px solid;
                 border-radius: 10px;
                 margin: 2% 2%;
@@ -136,23 +137,6 @@
             100% { transform: scale(1); color: rgb(48, 48, 48); background-color: rgb(255, 53, 53); rotate: 0deg;}
         }
 
-            @keyframes smooth{
-                from {background-color: rgb(255, 200, 186); color: black;}
-                to {background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);}
-            }
-
-            @keyframes r-smooth{
-                from {background-color: rgb(0, 0, 0); color: rgb(255, 255, 255);}
-                to {background-color: rgb(255, 200, 186); color: black;}
-            }
-            @keyframes nth{
-                0% {background-color: rgb(255, 165, 165); color: rgb(39, 39, 39);}
-                50% {background-color: rgb(255, 137, 137); color: rgb(0, 0, 0);}
-                100% {background-color: rgb(255, 165, 165); color: rgb(39, 39, 39);}
-            }
-            @keyframes nothg{
-                0% {color: black;}
-            }
             @media screen and (max-width: 600px){
                 p{
                     width: 80%;
@@ -198,10 +182,6 @@
                 border-radius: 10px;
                 padding: 2%;
                 background-color: rgb(255, 200, 200);
-                animation: nothg;
-            }
-            h2:hover{
-                animation: nothg;
             }
             }
             @media (min-width: 601px){
@@ -209,9 +189,8 @@
 				animation: puls-home-hover 3s infinite ease-in-out;
 			  }
               h2:hover{
-                background-color: rgb(255, 200, 186);
-                cursor: pointer;
-                animation: smooth 500ms forwards cubic-bezier(.67,-0.01,.32,1.22);
+                background-color: rgb(0, 0, 0);
+                color: rgb(255, 255, 255);
             }
 }
         </style>
@@ -265,6 +244,11 @@
         <script>
             const slides = document.getElementById("slides");
             const page = document.getElementById("page");
+            page.onclick = function(){
+                slides.style.transform = `translateX(-${0}%)`;
+                currentIndex = 0;
+                page.innerHTML = `${currentIndex + 1}/${maxIndex + 1}`;
+            };
             let currentIndex = 0;
             let maxIndex = slides.children.length - 1;
         

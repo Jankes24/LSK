@@ -9,6 +9,7 @@
     <style>
         body {
             background-color: azure;
+            user-select: none;
         }
         #exit{
             margin-left: .1vw;
@@ -33,6 +34,13 @@
             left: 5vw;
             margin-top: 40vh;     
         }
+        h2{
+            text-align: center;
+            border-bottom: dodgerblue double;
+            width: 40%;
+            margin: auto;
+            font-size: 2vw;
+        }
         #hider{
             position: absolute;
             display: flex;
@@ -47,6 +55,7 @@
         .Blok{
             border: 2px double;
             position: absolute;
+            display: grid;
             width: 10vw;
             max-width: 20vw;
             height: fit-content;
@@ -64,23 +73,23 @@
             color: azure;
         }
         #bk1{
-            animation: slide 24s linear -20s infinite;
-        }
-        #bk2{
-            animation: slide 24s linear -16s infinite;
-        }
-        #bk3{
-            animation: slide 24s linear -12s infinite;
-        }
-        #bk4{
-            animation: slide 24s linear -8s infinite;
-        }
-        #bk5{
-            animation: slide 24s linear -4s infinite;
-        }
-        #bk6{
-            animation: slide 24s linear -0s infinite;
-        }
+                animation: slide 12s linear -10s infinite;
+            }
+            #bk2{
+                animation: slide 12s linear -8s infinite;
+            }
+            #bk3{
+                animation: slide 12s linear -6s infinite;
+            }
+            #bk4{
+                animation: slide 12s linear -4s infinite;
+            }
+            #bk5{
+                animation: slide 12s linear -2s infinite;
+            }
+            #bk6{
+                animation: slide 12s linear -0s infinite;
+            }
         @media (min-width: 601px){
             #exit:hover{
             background-color:bisque;
@@ -98,26 +107,60 @@
                 padding: 0 5px;
             }
             #container{
-                margin-top: 10vh; 
-                height: 10vw;
+                margin-top: 5vh; 
+                height: 5vw;
+                left: 0;
+                width: 100%;
+            }
+            @keyframes slide {
+                0%{transform: translateX(125vw);}
+                100%{transform: translateX(-25vw);}
             }
             .Blok{
-                font-size: 3vw;
+                font-size: 4.2vw;
+                height: 80%;
+                width: fit-content;
             }
+            #bk1{
+                animation: slide 12s linear -10s infinite;
+            }
+            #bk2{
+                animation: slide 12s linear -8s infinite;
+            }
+            #bk3{
+                animation: slide 12s linear -6s infinite;
+            }
+            #bk4{
+                animation: slide 12s linear -4s infinite;
+            }
+            #bk5{
+                animation: slide 12s linear -2s infinite;
+            }
+            #bk6{
+                animation: slide 12s linear -0s infinite;
+            }
+            h2{
+            text-align: center;
+            border-bottom: dodgerblue double;
+            width: 70%;
+            margin: auto;
+            font-size: 4vw;
+        }
         }
     </style>
 </head>
 <body>
     <div class="Down" id="enter_ani"></div>
     <div id="exit" onclick="goto()">exit</div>
+    <h2>Kliknij osobę aby poznać jej udział</h2>
     <div id="container">
         <div id="hider">
-        <div class="Blok" id="bk1">Patryk</div>
-        <div class="Blok" id="bk2">Jacek</div>
-        <div class="Blok" id="bk3">Dawid</div>
-        <div class="Blok" id="bk4">Szymon</div>
-        <div class="Blok" id="bk5">Bartek</div>
-        <div class="Blok" id="bk6">Maxym</div>
+        <div class="Blok" id="bk1" onclick="otw('patryk')">Patryk</div>
+        <div class="Blok" id="bk2" onclick="otw('jacek')">Jacek</div>
+        <div class="Blok" id="bk3" onclick="otw('dawid')">Dawid</div>
+        <div class="Blok" id="bk4" onclick="otw('szymon')">Szymon</div>
+        <div class="Blok" id="bk5" onclick="otw('bartek')">Bartek</div>
+        <div class="Blok" id="bk6" onclick="otw('maxym')">Maxym</div>
     </div>
     </div>
     <script>
@@ -128,6 +171,9 @@
         setTimeout(function(){
             window.location.href = "index.html";
         }, 300);
+        }
+        function otw(hrf){
+            window.location.href = `czyny/${hrf}.html`;
         }
     </script>
 </body>

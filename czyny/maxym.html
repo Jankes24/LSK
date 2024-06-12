@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxym</title>
+    <style>
+        body{
+            width: 90%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: rgb(246, 255, 255);
+        }
+        h5{
+            transition: 300ms ease;
+            cursor: pointer;
+            position: fixed;
+            width: fit-content;
+            height: fit-content;
+            margin: auto;
+            left: 1vw;
+            top: 1vw;
+            padding: 2px;
+            font-size: max(0.3vw, 20px);
+            background-color: rgb(255, 98, 98);
+            border: 1px solid;
+            border-radius: 3px;
+        }
+        h5:hover{
+            background-color: rgb(255, 20, 20);
+        }
+        div{
+            background-color: rgb(221, 221, 221);
+            height: 80vh;
+            border: 1px solid;
+            margin-top: 2vh;
+            border-radius: 5px;
+        }
+        h1{
+            font-size: max(3vw,30px);
+            text-align: center;
+        }
+        h2{
+            font-size: max(2vw,20px);
+            text-align: center;
+            width: 80%;
+        }
+        h3{
+            font-size: max(2vw,20px);
+            text-align: center;
+            border: 1px solid;
+            width: 20%;
+            min-width: 200px;
+            margin: 20px auto;
+            background-color: rgba(170, 170, 170, 0.253);
+            border-radius: 3px;
+        }
+        ul{
+            background-color: azure;
+            width: 30%;
+            margin: auto;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: 1px solid;
+            border-radius: 5px;
+        }
+        li{
+            font-size: max(1.4vw,15px);
+        }
+    </style>
+</head>
+<body>
+    <h5 id="exit" onclick="back()">exit</h5>
+    <div>
+        <H1>Maxym Para</H1>
+        <ul>
+            <li>Dokumentacja</li>
+        </ul>
+        <h3>Ocena:-1</h3>    
+    </div>
+    <script>
+        function back(){
+            window.location.href = "../cos.html";
+        }
+    </script>
+</body>
+</html>

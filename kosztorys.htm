@@ -20,8 +20,28 @@ body{
 #finalp{
 	padding: 0;
 	margin: 0;
+  font-weight: bold;
+  transition: 500ms ease;
 }
-
+#finalp:hover{
+  transition: 300ms ease;
+    text-decoration: underline;
+    color: #29ce00;
+}
+#end{
+  transition: 400ms;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  font-size: 100%;
+  max-width: 20%;
+  width: 20vw;
+  margin: 10px auto;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
 #a {
  border: #000000 solid 2px;
  border-radius: 10px;
@@ -62,6 +82,7 @@ h3{
   background-color: #ff846e;
   padding: 3%;
   cursor: pointer;
+  transition: 400ms;
 }
 
 h4{
@@ -82,12 +103,13 @@ h4{
 }
 
 a{
+  transition: 1200ms ease;
 	text-decoration: none;
 	color: var(--FontHover);
 	font-weight: bold;
 }
 a:hover{
-  transition: 350ms ease;
+  transition: 250ms ease;
 	color: var(--FontHoverLink);
 	font-weight: bold;
 	text-decoration: underline;
@@ -145,8 +167,6 @@ h1 {
 h2 {
   max-width: 550px;
   margin: auto;
-  margin-top: 1%;
-  margin-bottom: 3%;
   text-align: center;
   color: black;
   font-size: 30px;
@@ -155,6 +175,7 @@ h2 {
   border-radius: 5px;
   border: solid 1px;
   padding-left: 5px;
+  margin-bottom: 20px;
 }
 
 tr:nth-child(even) {
@@ -165,10 +186,11 @@ tr {
   background-color: #a2ff8f;
 }
 .rowing{
-  transition: 1500ms ease;
+  transition: 1000ms ease;
   --FontHover: rgb(63, 63, 63);
-  --FontHoverLink: rgb(37, 131, 255);
+  --FontHoverLink: rgb(204, 255, 248);
   color: rgb(0, 0, 0);
+  cursor: pointer;
 }
 @media screen and (max-width: 600px) {
   table {
@@ -212,6 +234,17 @@ tr {
       max-width: 800px;
       min-height: 990px;
   }
+  #end{
+  font-size: 80%;
+  max-width: 40%;
+  width: 40vw;
+  margin: 10px auto;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
 }
 
 @keyframes puls-home-hover {
@@ -268,9 +301,18 @@ h5{
   --FontHover: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
 }
+#end:hover{
+  transition: 1s;
+  background: #8d0000;
+  scale: 1.1;
+}
 }
 
-
+#end:active{
+  transition: 0ms;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
 </style>
 </head>
 
@@ -295,6 +337,12 @@ h5{
 
 <script>
 var page = document.getElementById("str");
+page.onclick = function(){
+  delTable();
+  strona = datas.length - 1;
+  pageTurn();
+  CrTable(datas[strona]);
+};
 var CalaCenaNetto;
 var jednaCenaNetto;
 var firstRow = document.getElementById("F_Row");
@@ -335,19 +383,28 @@ function CrTable(data) {
 
   data.forEach(function(item) {
     var row = Kosztorys.insertRow();
-
+    item.page = iterator - 1;
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     row.classList.add("rowing");
-
-    cell1.innerHTML = iterator;
+  
+  cell1.innerHTML = iterator;
 	if (item.link != null){
     cell2.innerHTML = `<a href="${item.link}" target="_blank">${item.Name}</a>`;
-	}
-	else{
-	cell2.innerHTML = `<p id="finalp">${item.Name}</p>`;
+    row.onclick = function() {
+        window.open(item.link, '_blank');
+    };
+    }
+    else{
+      cell2.innerHTML = `<p id="finalp">${item.Name}</p>`;
+      row.onclick = function() {
+        delTable();
+        strona = item.page;
+        pageTurn();
+        CrTable(datas[item.page]);
+      };    
 	}
     if (item.Count > 0){
       

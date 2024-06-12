@@ -95,15 +95,20 @@ h2 {
 }
 
 h4 {
+    cursor: pointer;
+    transition: 300ms ease;
     font-size: 20px;
     text-align: center;
-    margin-left: 25%;
+    margin: 10px auto;
     border: 2px solid;
     position: fixed;
     bottom: 0;
-    left: 0;
-    width: 50%;
+    left: 40%;
+    width: 20%;
     background-color: beige;
+}
+h4:hover{
+    background-color: rgb(255, 255, 185);
 }
 
 #holder{
@@ -176,7 +181,7 @@ h4 {
         </div>
         <h2 id="e">Dokumentacja</h2>
     </div>
-    <h4 id="d">Stronę robił patryk jankowiak proszę o 6+</h4>
+    <h4 id="d">Udziały w projekcie</h4>
 
     <script>
         document.getElementById("a").addEventListener("click", () => links("kosztorys.htm"));
