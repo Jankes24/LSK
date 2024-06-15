@@ -9,7 +9,7 @@
 <style>
 :root{
   --FontHover: rgb(240, 240, 240);
-  --FontHoverLink: rgb(188, 236, 255);
+  --FontHoverLink: rgb(0, 0, 0);
 }
 body{
   background-color: #a3a3a3;
@@ -20,13 +20,9 @@ body{
 #finalp{
 	padding: 0;
 	margin: 0;
+  width: fit-content;
   font-weight: bold;
   transition: 500ms ease;
-}
-#finalp:hover{
-  transition: 300ms ease;
-    text-decoration: underline;
-    color: #29ce00;
 }
 #end{
   transition: 400ms;
@@ -91,35 +87,37 @@ h4{
   border: #000000 solid 2px;
   border-radius: 10px;
   background-color: #b4b4b4;
+  transition: 800ms ease;
   padding: 2%;
   cursor: pointer;
 }
 
 .sum-row {
-    background-color: #1c8d00;
+    background-color: rgb(255, 255, 255);
     font-style: oblique;
     font-weight: bold;
     color: #000000;
 }
 
 a{
-  transition: 1200ms ease;
+  transition: 100ms ease;
 	text-decoration: none;
 	color: var(--FontHover);
 	font-weight: bold;
 }
 a:hover{
   transition: 250ms ease;
-	color: var(--FontHoverLink);
+	color: rgb(39, 97, 255);
 	font-weight: bold;
 	text-decoration: underline;
 }
 
 .blanc-row {
-    background-color: #4242426e;
+    background-color: #000000fd;
 }
 
 table {
+  border-collapse: collapse;
   font-family: arial, sans-serif;
   border: solid black 2px;
   width: 88%;
@@ -127,25 +125,24 @@ table {
   margin-left: auto;
   margin-right: auto;
   border-radius: 2px;
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(255, 143, 143);
   font-style: italic;
   font-size: 98%;
   margin-bottom: 5%;
+  padding: .2%;
 }
 
 td{
-  border: 1px solid #fffddddd;
   text-align: left;
   padding: 8px;
   border: solid black 1px;
 }
 
 .th {
-  border: 1px solid #fffddddd;
+  border: 1px solid #000000;
   text-align: left;
   padding: 8px;
-  background-color: rgb(35, 223, 35);
-  border: solid gray 1px;
+  background-color: rgba(0, 0, 0, 0);
   font-weight: bold;
 }
 
@@ -183,7 +180,7 @@ tr:nth-child(even) {
 }
 
 tr {
-  background-color: #a2ff8f;
+  background-color: #c4c4c4;
 }
 .rowing{
   transition: 1000ms ease;
@@ -194,12 +191,13 @@ tr {
 }
 @media screen and (max-width: 600px) {
   table {
-    font-size: 2.4vw;
+    font-size: 2.55vw;
     border: solid black 2px;
     max-width: 680px;
     font-style:normal;
     font-weight: 0;
     margin-bottom: 10%;
+    padding: 0;
   }
   h1 {
     font-size: 40px;
@@ -233,6 +231,9 @@ tr {
   #a {
       max-width: 800px;
       min-height: 990px;
+  }
+  a:hover{
+    --FontHoverLink: rgb(0, 0, 0);
   }
   #end{
   font-size: 80%;
@@ -295,16 +296,25 @@ h5{
   padding: 2%;
   cursor: pointer;
 }
-.rowing:hover{
+tr.rowing:hover{
+  transition: 500ms ease;
+  background-color: rgb(0, 0, 0);
+  --FontHover: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+#finalp:hover{
   transition: 300ms ease;
-  background-color: rgba(0, 0, 0, 0.671);
-  --FontHover: rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
+    text-decoration: underline;
+    color: #54008b;
 }
 #end:hover{
   transition: 1s;
   background: #8d0000;
   scale: 1.1;
+}
+h4:hover{
+  transition: 400ms ease;
+  background-color: #636363;
 }
 }
 
@@ -346,11 +356,14 @@ page.onclick = function(){
 var CalaCenaNetto;
 var jednaCenaNetto;
 var firstRow = document.getElementById("F_Row");
+var rows = document.getElementById("tr");
 var Kosztorys = document.getElementById("1");
 function CrTable(data) {
+  var index = datas.indexOf(data);
   var SumCellSpan = 3;
   var header = document.getElementById("header");
-  
+  Kosztorys.style.background = `rgb(${colors[index].r}, ${colors[index].g}, ${colors[index].b})`;
+  header.style.background = `rgb(${color[index].r}, ${colors[index].g}, ${colors[index].b})`;
   var iterator = 1;
   var Cost = 0;
   header.innerHTML = headers[strona].Name;
@@ -384,6 +397,7 @@ function CrTable(data) {
   data.forEach(function(item) {
     var row = Kosztorys.insertRow();
     item.page = iterator - 1;
+
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
@@ -406,12 +420,33 @@ function CrTable(data) {
         CrTable(datas[item.page]);
       };    
 	}
+
+    if (iterator % 2 == 1){
+      cell1.style.background = `rgb(${color[index].r  + pr[index].p}, ${colors[index].g + pr[index].p}, ${colors[index].b + pr[index].p})`;
+      cell2.style.background = `rgb(${color[index].r + pr[index].p}, ${colors[index].g + pr[index].p}, ${colors[index].b + pr[index].p})`;
+      cell3.style.background = `rgb(${color[index].r + pr[index].p}, ${colors[index].g + pr[index].p}, ${colors[index].b + pr[index].p})`;
+      cell4.style.background = `rgb(${color[index].r + pr[index].p}, ${colors[index].g + pr[index].p}, ${colors[index].b + pr[index].p})`;
+    }
+    else{
+      cell1.style.background = `rgb(${color[index].r  + pr[index].s}, ${colors[index].g + pr[index].s}, ${colors[index].b + pr[index].s})`;
+      cell2.style.background = `rgb(${color[index].r + pr[index].s}, ${colors[index].g + pr[index].s}, ${colors[index].b + pr[index].s})`;
+      cell3.style.background = `rgb(${color[index].r + pr[index].s}, ${colors[index].g + pr[index].s}, ${colors[index].b + pr[index].s})`;
+      cell4.style.background = `rgb(${color[index].r + pr[index].s}, ${colors[index].g + pr[index].s}, ${colors[index].b + pr[index].s})`;  
+    }
+
     if (item.Count > 0){
       
       Fcell5.innerHTML = "Cena netto";
       Fcell4.innerHTML = "Cena jedn. netto";
       Fcell3.innerHTML = "Ilość";
       var cell5 = row.insertCell(4);
+
+      if (iterator % 2 == 1){
+      cell5.style.background = `rgb(${color[index].r + pr[index].p}, ${colors[index].g + pr[index].p}, ${colors[index].b + pr[index].p})`;
+    }
+    else{
+      cell5.style.background = `rgb(${color[index].r + pr[index].s}, ${colors[index].g + pr[index].s}, ${colors[index].b + pr[index].s})`;  
+    }
 
       if (item.Jednostka != null){
         cell3.innerHTML = item.Count + item.Jednostka;
@@ -424,6 +459,7 @@ function CrTable(data) {
       
       cell4.innerHTML = (item.PriceN1).toFixed(2) + "zł";
       Cost += item.PriceN1 * item.Count;
+      
     }
     else {
       Fcell4.innerHTML = "Cena brutto";
@@ -455,6 +491,10 @@ function CrTable(data) {
   cell1.classList.add("blanc-row");
   cell2.classList.add("sum-row");
   cell3.classList.add("sum-row");
+  firstRow.style.background = `rgb(${color[index].r}, ${colors[index].g}, ${colors[index].b})`;
+  cell1.style.background = `rgb(${color[index].r - 30}, ${colors[index].g - 30}, ${colors[index].b - 30})`;
+  cell2.style.background = `rgb(${color[index].r}, ${colors[index].g}, ${colors[index].b})`;
+  cell3.style.background = `rgb(${color[index].r}, ${colors[index].g}, ${colors[index].b})`;
 }
 
 function delTable() {
@@ -553,6 +593,34 @@ var datas = [
 ]
 ];
 
+var colors = [
+  {r:255, g:53, b:53},
+  {r:255, g:133, b:51},
+  {r:235, g:235, b:0},
+  {r:137, g:255, b:41},
+  {r:41, g:215, b:126},
+  {r:41, g:123, b:255},
+  {r:109, g:41, b:255}
+]
+var color = [
+  {r:155, g:3, b:3},
+  {r:195, g:83, b:35},
+  {r:235, g:235, b:0},
+  {r:37, g:125, b:4},
+  {r:1, g:115, b:26},
+  {r:81, g:103, b:175},
+  {r:119, g:61, b:215}
+];
+var pr = [
+  {p:120, s:150},
+  {p:100, s:120},
+  {p:180, s:150},
+  {p:180, s:150},
+  {p:160, s:70},
+  {p:120, s:100},
+  {p:120, s:70}
+];
+
 document.getElementById("back").addEventListener("click", function(event) {
         enter_ani.className = '';
         enter_ani.className = 'Up';
@@ -585,7 +653,7 @@ document.getElementById("next").addEventListener("click", function(event) {
   CrTable(datas[strona]);
 });
 CrTable(datas[0]);
-pageTurn();
+pageTurn()
 </script>
 </body>
 </html>
